@@ -145,7 +145,6 @@ export default function Template3({ event, guestName }: Props) {
                     <span className="text-[10px] md:text-xs text-gray-500 mt-2 leading-relaxed max-w-[220px] text-center">{event.locationLine2}</span>
                   </div>
                 </div>
-                </div>
 
                 {/* Footer Message */}
                 <p className="text-xs md:text-sm text-gray-500 italic leading-relaxed max-w-lg mt-8 px-4">
