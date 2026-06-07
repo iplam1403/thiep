@@ -259,6 +259,10 @@ export default function Template1({ event, guestName }: Props) {
                   transition={{ delay: 0.5, duration: 1 }}
                   className="relative w-full bg-[#FDFBF7]/90 backdrop-blur-xl shadow-[0_30px_60px_rgba(90,40,40,0.15)] rounded-sm border border-[#C49B5B]/30 flex flex-col px-4 md:px-12 py-12 md:py-16"
                 >
+                  {/* Intricate Gold SVG Border Frame - Thinner and more elegant */}
+                  <div className="absolute inset-4 border-[0.5px] border-[#C49B5B]/60 pointer-events-none" />
+                  <div className="absolute inset-5 border-[0.5px] border-[#C49B5B]/30 pointer-events-none" />
+                  
                   {/* Dynamic Year Watermark - Very faint */}
                   <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden z-0 opacity-[0.015]">
                     <span className="text-[40vw] md:text-[320px] font-bold text-[#C49B5B] tracking-[-0.05em] leading-none select-none" style={{ fontFamily: "'Playfair Display', serif" }}>
@@ -266,50 +270,55 @@ export default function Template1({ event, guestName }: Props) {
                     </span>
                   </div>
 
-                  {/* ─────────────────────────────────────────────────────────
-                      1. TẦNG TRÊN (HEADER TIER PLATE)
-                      ───────────────────────────────────────────────────────── */}
-                  <div className="relative self-center w-[95%] md:w-[85%] bg-[#FFFDF9] shadow-[0_20px_40px_rgba(196,155,91,0.18),0_4px_10px_rgba(0,0,0,0.05)] border-[0.5px] border-[#C49B5B]/50 rounded-sm -mt-20 md:-mt-28 p-6 md:p-8 mb-10 md:mb-12 z-20 flex flex-col items-center">
-                    
-                    {/* Corner Ornaments */}
-                    <svg className="absolute top-2 left-2 w-4 h-4 text-[#C49B5B]/70" viewBox="0 0 100 100" fill="currentColor"><path d="M0 0 L20 0 C20 10 10 20 0 20 Z" /></svg>
-                    <svg className="absolute top-2 right-2 w-4 h-4 text-[#C49B5B]/70 transform rotate-90" viewBox="0 0 100 100" fill="currentColor"><path d="M0 0 L20 0 C20 10 10 20 0 20 Z" /></svg>
-                    <svg className="absolute bottom-2 right-2 w-4 h-4 text-[#C49B5B]/70 transform rotate-180" viewBox="0 0 100 100" fill="currentColor"><path d="M0 0 L20 0 C20 10 10 20 0 20 Z" /></svg>
-                    <svg className="absolute bottom-2 left-2 w-4 h-4 text-[#C49B5B]/70 transform -rotate-90" viewBox="0 0 100 100" fill="currentColor"><path d="M0 0 L20 0 C20 10 10 20 0 20 Z" /></svg>
-
-                    {/* Hyper-Realistic Wax Seal */}
-                    <div className="absolute -top-8 left-1/2 -translate-x-1/2 flex flex-col items-center z-50">
-                      <div className="w-16 h-16 md:w-20 md:h-20 wax-seal-anim relative z-10 filter drop-shadow-[0_15px_15px_rgba(0,0,0,0.25)]">
-                        <svg width="0" height="0" className="absolute">
-                          <filter id="waxTexture">
-                            <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="4" result="noise" />
-                            <feDisplacementMap in="SourceGraphic" in2="noise" scale="3" xChannelSelector="R" yChannelSelector="G" />
-                          </filter>
-                        </svg>
-                        <div className="w-full h-full rounded-full bg-[#8B1A1A] p-[2px] flex items-center justify-center shadow-[inset_0_4px_8px_rgba(255,255,255,0.4),inset_0_-4px_8px_rgba(0,0,0,0.6),0_2px_4px_rgba(0,0,0,0.5)]" style={{ filter: 'url(#waxTexture)' }}>
-                          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#d93838]/60 via-transparent to-[#4a0808]/80 mix-blend-overlay pointer-events-none" />
-                          <div className="w-full h-full rounded-full bg-[#7A1515] flex items-center justify-center border-[1.5px] border-[#4a0808]/50 shadow-[inset_0_3px_5px_rgba(0,0,0,0.4)]">
-                            <span className="text-[#F3E5AB] text-[20px] md:text-[26px] font-serif drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)] opacity-95 relative z-10" style={{ fontFamily: "'Great Vibes', cursive" }}>{event.hostName.charAt(0)}</span>
-                            <div className="absolute inset-1 rounded-full bg-gradient-to-tr from-transparent via-white/10 to-transparent pointer-events-none" />
-                          </div>
+                  {/* Hyper-Realistic Wax Seal */}
+                  <div className="absolute -top-8 left-1/2 -translate-x-1/2 flex flex-col items-center z-50">
+                    <div className="w-16 h-16 md:w-20 md:h-20 wax-seal-anim relative z-10 filter drop-shadow-[0_15px_15px_rgba(0,0,0,0.15)]">
+                      <svg width="0" height="0" className="absolute">
+                        <filter id="waxTexture">
+                          <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="4" result="noise" />
+                          <feDisplacementMap in="SourceGraphic" in2="noise" scale="3" xChannelSelector="R" yChannelSelector="G" />
+                        </filter>
+                      </svg>
+                      <div className="w-full h-full rounded-full bg-[#8B1A1A] p-[2px] flex items-center justify-center shadow-[inset_0_4px_8px_rgba(255,255,255,0.4),inset_0_-4px_8px_rgba(0,0,0,0.6),0_2px_4px_rgba(0,0,0,0.5)]" style={{ filter: 'url(#waxTexture)' }}>
+                        <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#d93838]/60 via-transparent to-[#4a0808]/80 mix-blend-overlay pointer-events-none" />
+                        <div className="w-full h-full rounded-full bg-[#7A1515] flex items-center justify-center border-[1.5px] border-[#4a0808]/50 shadow-[inset_0_3px_5px_rgba(0,0,0,0.4)]">
+                          <span className="text-[#F3E5AB] text-[20px] md:text-[26px] font-serif drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)] opacity-95 relative z-10" style={{ fontFamily: "'Great Vibes', cursive" }}>{event.hostName.charAt(0)}</span>
+                          <div className="absolute inset-1 rounded-full bg-gradient-to-tr from-transparent via-white/10 to-transparent pointer-events-none" />
                         </div>
                       </div>
                     </div>
-
-                    {/* Header Content */}
-                    {event.universityLogo ? (
-                      <img src={event.universityLogo} className="w-12 h-12 md:w-16 md:h-16 object-contain mb-4 mt-6 opacity-90 z-10" alt="" />
-                    ) : (
-                      <div className="w-10 h-12 bg-gradient-to-b from-[#1e3a8a] to-[#172554] rounded-b-lg flex items-center justify-center text-white text-[6px] font-medium shadow-sm mb-4 mt-6 z-10">LOGO</div>
-                    )}
-                    <h3 className="text-[9px] md:text-[10px] font-semibold text-[#3a2e2b] leading-relaxed uppercase tracking-[0.3em] mb-1.5 text-center">{event.universityName}</h3>
-                    <p className="text-[6px] md:text-[7px] text-[#C49B5B] uppercase tracking-[0.4em] mb-2 text-center">{event.universitySubName}</p>
                   </div>
 
-                  {/* ─────────────────────────────────────────────────────────
-                      2. TẦNG GIỮA (BODY CONTENT)
-                      ───────────────────────────────────────────────────────── */}
-                  <div className="relative z-10 flex flex-col items-center w-full px-2">
+                  {/* Corner Ornaments - Minimalist */}
+                  <svg className="absolute top-4 left-4 w-6 h-6 text-[#C49B5B]/80" viewBox="0 0 100 100" fill="currentColor">
+                    <path d="M0 0 L20 0 C20 10 10 20 0 20 Z" />
+                  </svg>
+                  <svg className="absolute top-4 right-4 w-6 h-6 text-[#C49B5B]/80 transform rotate-90" viewBox="0 0 100 100" fill="currentColor">
+                    <path d="M0 0 L20 0 C20 10 10 20 0 20 Z" />
+                  </svg>
+                  <svg className="absolute bottom-4 right-4 w-6 h-6 text-[#C49B5B]/80 transform rotate-180" viewBox="0 0 100 100" fill="currentColor">
+                    <path d="M0 0 L20 0 C20 10 10 20 0 20 Z" />
+                  </svg>
+                  <svg className="absolute bottom-4 left-4 w-6 h-6 text-[#C49B5B]/80 transform -rotate-90" viewBox="0 0 100 100" fill="currentColor">
+                    <path d="M0 0 L20 0 C20 10 10 20 0 20 Z" />
+                  </svg>
+
+                  {/* ================= HEADER SECTION ================= */}
+                  <div className="w-full flex flex-col items-center z-10 relative">
+                    {event.universityLogo ? (
+                      <img src={event.universityLogo} className="w-12 h-12 md:w-16 md:h-16 object-contain mb-6 opacity-90" alt="" />
+                    ) : (
+                      <div className="w-10 h-12 bg-gradient-to-b from-[#1e3a8a] to-[#172554] rounded-b-lg flex items-center justify-center text-white text-[6px] font-medium shadow-sm mb-6">LOGO</div>
+                    )}
+                    <h3 className="text-[10px] md:text-[11px] font-medium text-[#3a2e2b] leading-relaxed uppercase tracking-[0.3em] mb-2 text-center">{event.universityName}</h3>
+                    <p className="text-[7px] md:text-[8px] text-[#C49B5B] uppercase tracking-[0.4em] mb-6 text-center">{event.universitySubName}</p>
+                  </div>
+
+                  {/* Header Divider */}
+                  <div className="w-[80%] mx-auto h-[0.5px] bg-gradient-to-r from-transparent via-[#C49B5B]/60 to-transparent mb-10 z-10 relative" />
+
+                  {/* ================= BODY SECTION ================= */}
+                  <div className="w-full flex flex-col items-center z-10 relative">
                     <p className="text-[10px] md:text-[11px] italic text-[#8B1A1A] mb-3" style={{ fontFamily: "'Playfair Display', serif" }}>Dear</p>
                     <p className="font-semibold text-lg md:text-xl text-[#3a2e2b] tracking-[0.15em] uppercase mb-10 border-b-[0.5px] border-[#C49B5B]/40 pb-3 px-12 min-w-[240px] text-center">{guestName}</p>
 
@@ -317,53 +326,44 @@ export default function Template1({ event, guestName }: Props) {
                       {isGrad ? 'Thân mời bạn đến dự lễ tốt nghiệp của' : 'Trân trọng kính mời bạn đến dự tiệc sinh nhật của'}
                     </p>
 
-                    <h1 className="text-[2.5rem] md:text-[4.5rem] leading-[1.2] font-normal font-serif gold-foil-text mb-6 text-center" style={{ fontFamily: "'Great Vibes', cursive" }}>
+                    <h1 className="text-[2.5rem] md:text-[4rem] leading-[1.2] font-normal font-serif gold-foil-text mb-6 text-center" style={{ fontFamily: "'Great Vibes', cursive" }}>
                       {event.hostName}
                     </h1>
 
                     <h2 className="text-xl md:text-[2rem] font-medium text-[#3a2e2b] tracking-[0.3em] uppercase leading-tight mb-3 text-center" style={{ fontFamily: "'Playfair Display', serif" }}>
                       {event.title}
                     </h2>
-                    <p className="text-[8px] md:text-[9px] text-[#C49B5B] tracking-[0.4em] uppercase font-semibold mb-6 text-center">{event.subtitle}</p>
+                    <p className="text-[8px] md:text-[9px] text-[#C49B5B] tracking-[0.4em] uppercase font-semibold mb-10 text-center">{event.subtitle}</p>
                   </div>
 
-                  {/* ─────────────────────────────────────────────────────────
-                      3. TẦNG DƯỚI (FOOTER TIER PLATE)
-                      ───────────────────────────────────────────────────────── */}
-                  <div className="relative self-center w-[95%] md:w-[85%] bg-[#FFFDF9] shadow-[0_-15px_30px_rgba(196,155,91,0.12),0_-2px_8px_rgba(0,0,0,0.04)] border-[0.5px] border-[#C49B5B]/50 rounded-sm mt-8 -mb-20 md:-mb-28 p-6 md:p-8 flex flex-col items-center z-20">
-                    
-                    {/* Corner Ornaments */}
-                    <svg className="absolute top-2 left-2 w-4 h-4 text-[#C49B5B]/70" viewBox="0 0 100 100" fill="currentColor"><path d="M0 0 L20 0 C20 10 10 20 0 20 Z" /></svg>
-                    <svg className="absolute top-2 right-2 w-4 h-4 text-[#C49B5B]/70 transform rotate-90" viewBox="0 0 100 100" fill="currentColor"><path d="M0 0 L20 0 C20 10 10 20 0 20 Z" /></svg>
-                    <svg className="absolute bottom-2 right-2 w-4 h-4 text-[#C49B5B]/70 transform rotate-180" viewBox="0 0 100 100" fill="currentColor"><path d="M0 0 L20 0 C20 10 10 20 0 20 Z" /></svg>
-                    <svg className="absolute bottom-2 left-2 w-4 h-4 text-[#C49B5B]/70 transform -rotate-90" viewBox="0 0 100 100" fill="currentColor"><path d="M0 0 L20 0 C20 10 10 20 0 20 Z" /></svg>
+                  {/* Footer Divider */}
+                  <div className="w-full flex justify-center items-center mb-10 z-10 relative">
+                    <div className="h-[0.5px] w-16 md:w-24 bg-[#C49B5B]/60" />
+                    <div className="w-1.5 h-1.5 rotate-45 border-[0.5px] border-[#C49B5B] mx-4" />
+                    <div className="h-[0.5px] w-16 md:w-24 bg-[#C49B5B]/60" />
+                  </div>
 
-                    {/* Divider inside Footer */}
-                    <div className="w-full flex justify-center items-center mb-6">
-                      <div className="h-[0.5px] w-12 md:w-20 bg-[#C49B5B]/60" />
-                      <div className="w-1.5 h-1.5 rotate-45 border-[0.5px] border-[#C49B5B] mx-3" />
-                      <div className="h-[0.5px] w-12 md:w-20 bg-[#C49B5B]/60" />
-                    </div>
-
-                    <div className="flex flex-col md:flex-row w-full justify-between items-center gap-8 md:gap-4 px-2 md:px-8 mb-6">
+                  {/* ================= FOOTER SECTION ================= */}
+                  <div className="w-full z-10 relative flex flex-col items-center">
+                    <div className="flex flex-col md:flex-row w-full justify-between items-center gap-10 md:gap-4 px-4 md:px-12 mb-10">
                       <div className="flex flex-col items-center md:w-1/2">
-                        <p className="text-[7px] md:text-[8px] text-[#C49B5B] uppercase tracking-[0.4em] mb-2 font-semibold">Vào lúc</p>
+                        <p className="text-[8px] md:text-[9px] text-[#C49B5B] uppercase tracking-[0.4em] mb-3 font-semibold">Vào lúc</p>
                         <p className="text-xs md:text-sm font-medium text-[#3a2e2b] tracking-[0.2em] uppercase">{event.timeLine1}</p>
-                        <p className="text-[9px] md:text-[10px] font-semibold text-[#8B1A1A] uppercase tracking-[0.3em] my-1.5">{event.timeLine2}</p>
-                        <p className="text-[7px] md:text-[8px] text-gray-500 font-medium tracking-[0.2em] uppercase">{event.timeLine3}</p>
+                        <p className="text-[10px] md:text-[11px] font-semibold text-[#8B1A1A] uppercase tracking-[0.3em] my-1.5">{event.timeLine2}</p>
+                        <p className="text-[8px] md:text-[9px] text-gray-500 font-medium tracking-[0.2em] uppercase">{event.timeLine3}</p>
                       </div>
 
-                      <div className="hidden md:block w-[0.5px] h-12 bg-[#C49B5B]/40" />
-                      <div className="md:hidden h-[0.5px] w-12 bg-[#C49B5B]/40" />
+                      <div className="hidden md:block w-[0.5px] h-16 bg-[#C49B5B]/50" />
+                      <div className="md:hidden h-[0.5px] w-16 bg-[#C49B5B]/50" />
 
                       <div className="flex flex-col items-center md:w-1/2">
-                        <p className="text-[7px] md:text-[8px] text-[#C49B5B] uppercase tracking-[0.4em] mb-2 font-semibold">Tại</p>
-                        <p className="text-[9px] md:text-[10px] font-medium text-[#3a2e2b] uppercase tracking-[0.2em] text-center leading-[1.8]">{event.locationLine1}</p>
-                        <p className="text-[6px] md:text-[7px] text-gray-500 mt-2 text-center tracking-[0.15em]">{event.locationLine2}</p>
+                        <p className="text-[8px] md:text-[9px] text-[#C49B5B] uppercase tracking-[0.4em] mb-3 font-semibold">Tại</p>
+                        <p className="text-[10px] md:text-[11px] font-medium text-[#3a2e2b] uppercase tracking-[0.2em] text-center leading-[2]">{event.locationLine1}</p>
+                        <p className="text-[7px] md:text-[8px] text-gray-500 mt-2 text-center tracking-[0.15em]">{event.locationLine2}</p>
                       </div>
                     </div>
 
-                    <p className="text-[8px] md:text-[9px] text-gray-400 italic tracking-[0.1em] leading-relaxed text-center">
+                    <p className="text-[9px] md:text-[10px] text-gray-400 italic tracking-[0.1em] leading-[2] px-6 text-center">
                       "{event.footerMessage}"
                     </p>
                   </div>
