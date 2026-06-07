@@ -14,76 +14,31 @@ const removeAccents = (str: string) => {
     .replace(/Đ/g, 'D');
 }
 
-/* Floral background SVG pattern */
+/* Lush Watercolor Floral Background */
 const FloralBg = () => (
-  <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-[0.07]">
-    {/* Falling leaves overlay */}
-    <div className="absolute inset-0 z-0">
-      <div className="absolute top-[10%] left-[20%] w-3 h-3 bg-[#5a5a5a] rounded-bl-full rounded-tr-full falling-leaf" style={{ animationDelay: '0s' }} />
-      <div className="absolute top-[30%] left-[70%] w-4 h-2 bg-[#5a5a5a] rounded-full falling-leaf" style={{ animationDelay: '2s' }} />
-      <div className="absolute top-[60%] left-[40%] w-3 h-4 bg-[#5a5a5a] rounded-tl-full rounded-br-full falling-leaf" style={{ animationDelay: '4s' }} />
-      <div className="absolute top-[80%] left-[80%] w-2 h-3 bg-[#5a5a5a] rounded-bl-full rounded-tr-full falling-leaf" style={{ animationDelay: '1s' }} />
-    </div>
+  <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-3xl mix-blend-multiply">
+    <div 
+      className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-[0.85]"
+      style={{ backgroundImage: 'url(/assets/floral-bg.png)' }}
+    />
+    {/* Premium Paper Texture overlay */}
+    <div className="absolute inset-0 opacity-[0.4] mix-blend-color-burn"
+      style={{
+        backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+        backgroundRepeat: 'repeat'
+      }}
+    />
+    
+    {/* Subtle central fade to ensure text is readable */}
+    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(253,251,247,0.7)_20%,transparent_100%)]" />
 
-    <svg className="absolute top-0 left-0 w-full h-full z-10" viewBox="0 0 500 900" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-      {/* Large leaf clusters - top left */}
-      <g opacity="0.8" transform="translate(20,60) rotate(-15)">
-        <ellipse cx="40" cy="0" rx="45" ry="12" fill="#5a5a5a" transform="rotate(35)"/>
-        <ellipse cx="20" cy="-15" rx="40" ry="10" fill="#5a5a5a" transform="rotate(55)"/>
-        <ellipse cx="55" cy="15" rx="38" ry="9" fill="#5a5a5a" transform="rotate(20)"/>
-        <ellipse cx="10" cy="10" rx="35" ry="8" fill="#5a5a5a" transform="rotate(70)"/>
-        <circle cx="30" cy="5" r="8" fill="#666"/>
-        <circle cx="50" cy="-5" r="5" fill="#777"/>
-      </g>
-      {/* Top right cluster */}
-      <g opacity="0.7" transform="translate(350,30) rotate(10)">
-        <ellipse cx="40" cy="0" rx="50" ry="13" fill="#5a5a5a" transform="rotate(-30)"/>
-        <ellipse cx="70" cy="20" rx="45" ry="11" fill="#5a5a5a" transform="rotate(-50)"/>
-        <ellipse cx="20" cy="25" rx="40" ry="10" fill="#5a5a5a" transform="rotate(-10)"/>
-        <circle cx="45" cy="15" r="10" fill="#666"/>
-        <circle cx="25" cy="5" r="6" fill="#777"/>
-      </g>
-      {/* Left side middle */}
-      <g opacity="0.6" transform="translate(-30,350) rotate(5)">
-        <ellipse cx="50" cy="0" rx="55" ry="14" fill="#5a5a5a" transform="rotate(40)"/>
-        <ellipse cx="30" cy="30" rx="45" ry="12" fill="#5a5a5a" transform="rotate(65)"/>
-        <ellipse cx="70" cy="-20" rx="40" ry="10" fill="#5a5a5a" transform="rotate(25)"/>
-        <circle cx="40" cy="10" r="12" fill="#666"/>
-        <circle cx="60" cy="-10" r="7" fill="#777"/>
-        <circle cx="20" cy="20" r="5" fill="#777"/>
-      </g>
-      {/* Right side middle-low */}
-      <g opacity="0.5" transform="translate(380,500) rotate(-20)">
-        <ellipse cx="30" cy="0" rx="48" ry="12" fill="#5a5a5a" transform="rotate(-35)"/>
-        <ellipse cx="10" cy="-20" rx="42" ry="10" fill="#5a5a5a" transform="rotate(-60)"/>
-        <ellipse cx="50" cy="20" rx="38" ry="9" fill="#5a5a5a" transform="rotate(-15)"/>
-        <circle cx="30" cy="5" r="9" fill="#666"/>
-      </g>
-      {/* Bottom left */}
-      <g opacity="0.7" transform="translate(10,720) rotate(15)">
-        <ellipse cx="50" cy="0" rx="52" ry="14" fill="#5a5a5a" transform="rotate(30)"/>
-        <ellipse cx="25" cy="-20" rx="45" ry="11" fill="#5a5a5a" transform="rotate(60)"/>
-        <ellipse cx="75" cy="15" rx="40" ry="10" fill="#5a5a5a" transform="rotate(10)"/>
-        <circle cx="45" cy="0" r="11" fill="#666"/>
-        <circle cx="65" cy="-10" r="6" fill="#777"/>
-      </g>
-      {/* Bottom right */}
-      <g opacity="0.6" transform="translate(340,780) rotate(-10)">
-        <ellipse cx="40" cy="0" rx="50" ry="13" fill="#5a5a5a" transform="rotate(-25)"/>
-        <ellipse cx="70" cy="15" rx="42" ry="11" fill="#5a5a5a" transform="rotate(-50)"/>
-        <ellipse cx="15" cy="20" rx="38" ry="9" fill="#5a5a5a" transform="rotate(-5)"/>
-        <circle cx="40" cy="10" r="10" fill="#666"/>
-      </g>
-      {/* Scattered small elements */}
-      <circle cx="200" cy="150" r="4" fill="#888" opacity="0.4"/>
-      <circle cx="150" cy="400" r="3" fill="#888" opacity="0.3"/>
-      <circle cx="300" cy="300" r="5" fill="#888" opacity="0.3"/>
-      <circle cx="250" cy="650" r="4" fill="#888" opacity="0.4"/>
-      <circle cx="100" cy="550" r="3" fill="#888" opacity="0.3"/>
-      <ellipse cx="180" cy="250" rx="15" ry="5" fill="#5a5a5a" opacity="0.3" transform="rotate(40)"/>
-      <ellipse cx="320" cy="450" rx="18" ry="5" fill="#5a5a5a" opacity="0.3" transform="rotate(-30)"/>
-      <ellipse cx="120" cy="680" rx="20" ry="5" fill="#5a5a5a" opacity="0.25" transform="rotate(50)"/>
-    </svg>
+    {/* Falling leaves overlay (kept for animation) */}
+    <div className="absolute inset-0 z-0">
+      <div className="absolute top-[10%] left-[20%] w-3 h-3 bg-[#8B1A1A] rounded-bl-full rounded-tr-full falling-leaf opacity-60" style={{ animationDelay: '0s' }} />
+      <div className="absolute top-[30%] left-[70%] w-4 h-2 bg-[#C49B5B] rounded-full falling-leaf opacity-60" style={{ animationDelay: '2s' }} />
+      <div className="absolute top-[60%] left-[40%] w-3 h-4 bg-[#A22222] rounded-tl-full rounded-br-full falling-leaf opacity-60" style={{ animationDelay: '4s' }} />
+      <div className="absolute top-[80%] left-[80%] w-2 h-3 bg-[#E6C575] rounded-bl-full rounded-tr-full falling-leaf opacity-60" style={{ animationDelay: '1s' }} />
+    </div>
   </div>
 )
 
@@ -480,11 +435,21 @@ export default function Template1({ event, guestName }: Props) {
 
                 {/* Centered Dear ___ line */}
                 <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8 }}
-                  className="flex flex-col items-center mb-6 md:mb-8 w-full max-w-[200px] md:max-w-md">
+                  className="flex flex-col items-center mb-4 md:mb-6 w-full max-w-[200px] md:max-w-md">
                   <span className="text-sm md:text-base italic text-gray-400 mb-0.5 font-light" style={{ fontFamily: "'Be Vietnam Pro', sans-serif" }}>Dear</span>
                   <span className="font-semibold text-lg md:text-2xl text-[#7A1515] border-b border-dashed border-[#C49B5B]/50 px-2 md:px-6 pb-1 text-center min-w-[120px] md:min-w-[220px] break-words max-w-full">
                     {guestName}
                   </span>
+                </motion.div>
+
+                {/* Ornate Divider */}
+                <motion.div initial={{ opacity: 0, scale: 0 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.9 }} className="mb-4">
+                  <svg width="120" height="15" viewBox="0 0 120 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0,7.5 L45,7.5 M75,7.5 L120,7.5" stroke="#C49B5B" strokeWidth="0.5" />
+                    <path d="M60,0 L65,7.5 L60,15 L55,7.5 Z" fill="#C49B5B" />
+                    <circle cx="50" cy="7.5" r="1.5" fill="#C49B5B" />
+                    <circle cx="70" cy="7.5" r="1.5" fill="#C49B5B" />
+                  </svg>
                 </motion.div>
 
                 {/* Invitation text */}
@@ -524,14 +489,16 @@ export default function Template1({ event, guestName }: Props) {
 
                 {/* Subtitle */}
                 <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.6 }}
-                  className="mb-8 md:mb-10 px-2">
+                  className="mb-6 md:mb-8 px-2">
                   <p className="text-[10px] md:text-xs text-gray-400 tracking-[0.2em] uppercase">{event.subtitle}</p>
                 </motion.div>
 
                 {/* Time & Location details — side-by-side on desktop, stacked on mobile */}
                 <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.8 }}
-                  className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-16 my-2 w-full max-w-2xl border-y border-[#C49B5B]/15 py-6 md:py-8 px-2"
+                  className="relative grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-16 my-2 w-full max-w-2xl border-y-2 border-[#C49B5B]/15 py-8 md:py-10 px-2 bg-gradient-to-r from-transparent via-[#C49B5B]/[0.02] to-transparent"
                 >
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#FDFBF7] px-4 text-[#C49B5B] text-xl">⚜</div>
+                  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 bg-[#FDFBF7] px-4 text-[#C49B5B] text-xl">⚜</div>
                   {/* Time Section */}
                   <div className="flex flex-col items-center">
                     <p className="text-[9px] md:text-[10px] text-gray-400 uppercase tracking-[0.25em] mb-1 md:mb-2 font-medium">Vào lúc</p>
