@@ -17,7 +17,15 @@ const removeAccents = (str: string) => {
 /* Floral background SVG pattern */
 const FloralBg = () => (
   <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-[0.07]">
-    <svg className="absolute top-0 left-0 w-full h-full" viewBox="0 0 500 900" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+    {/* Falling leaves overlay */}
+    <div className="absolute inset-0 z-0">
+      <div className="absolute top-[10%] left-[20%] w-3 h-3 bg-[#5a5a5a] rounded-bl-full rounded-tr-full falling-leaf" style={{ animationDelay: '0s' }} />
+      <div className="absolute top-[30%] left-[70%] w-4 h-2 bg-[#5a5a5a] rounded-full falling-leaf" style={{ animationDelay: '2s' }} />
+      <div className="absolute top-[60%] left-[40%] w-3 h-4 bg-[#5a5a5a] rounded-tl-full rounded-br-full falling-leaf" style={{ animationDelay: '4s' }} />
+      <div className="absolute top-[80%] left-[80%] w-2 h-3 bg-[#5a5a5a] rounded-bl-full rounded-tr-full falling-leaf" style={{ animationDelay: '1s' }} />
+    </div>
+
+    <svg className="absolute top-0 left-0 w-full h-full z-10" viewBox="0 0 500 900" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
       {/* Large leaf clusters - top left */}
       <g opacity="0.8" transform="translate(20,60) rotate(-15)">
         <ellipse cx="40" cy="0" rx="45" ry="12" fill="#5a5a5a" transform="rotate(35)"/>
@@ -156,22 +164,48 @@ export default function Template1({ event, guestName }: Props) {
                 0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.2; }
                 50% { transform: translateY(-15px) rotate(180deg); opacity: 0.6; }
               }
-              .star-glint-active {
-                animation: glintStarAnim 4s ease-in-out infinite;
+              /* New Premium Effects */
+              @keyframes lightSweep {
+                0% { transform: translateX(-150%) skewX(-45deg); }
+                100% { transform: translateX(250%) skewX(-45deg); }
+              }
+              .holographic-sweep {
+                position: absolute;
+                top: 0; left: 0; right: 0; bottom: 0;
+                background: linear-gradient(90deg, transparent, rgba(255, 245, 195, 0.15), transparent);
+                animation: lightSweep 6s infinite ease-in-out;
+                pointer-events: none;
+                z-index: 25;
+              }
+              @keyframes waxSealDrop {
+                0% { transform: scale(3) translateY(-50px); opacity: 0; filter: blur(5px); }
+                50% { transform: scale(0.9) translateY(2px); opacity: 1; filter: blur(0px); }
+                70% { transform: scale(1.05) translateY(-1px); }
+                100% { transform: scale(1) translateY(0); }
+              }
+              .wax-seal-anim {
+                animation: waxSealDrop 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+                animation-delay: 1.5s;
+                opacity: 0;
               }
               @keyframes glintStarAnim {
                 0%, 75%, 100% { transform: scale(0) rotate(0deg); opacity: 0; }
-                80% { transform: scale(1.3) rotate(90deg); opacity: 1; }
-                85% { transform: scale(1) rotate(180deg); opacity: 1; filter: drop-shadow(0 0 6px rgba(255, 245, 195, 0.9)); }
+                80% { transform: scale(1.3) rotate(90deg); opacity: 1; filter: drop-shadow(0 0 8px rgba(255, 245, 195, 1)); }
+                85% { transform: scale(1) rotate(180deg); opacity: 1; }
                 90% { transform: scale(1.2) rotate(270deg); opacity: 0.8; }
               }
-              @keyframes tasselSway {
-                0%, 100% { transform: translateX(-50%) rotate(-5deg); }
-                50% { transform: translateX(-50%) rotate(5deg); }
+              .star-glint-active {
+                animation: glintStarAnim 4s ease-in-out infinite;
+                transform-origin: center;
               }
-              .animate-tassel-sway {
-                animation: tasselSway 2.5s ease-in-out infinite;
-                transform-origin: top center;
+              @keyframes fallLeaf {
+                0% { transform: translate(0, -10px) rotate(0deg); opacity: 0; }
+                10% { opacity: 0.5; }
+                90% { opacity: 0.5; }
+                100% { transform: translate(20px, 80px) rotate(45deg); opacity: 0; }
+              }
+              .falling-leaf {
+                animation: fallLeaf 8s linear infinite;
               }
             `}</style>
 
@@ -191,8 +225,15 @@ export default function Template1({ event, guestName }: Props) {
               </div>
 
               {/* Elegant Double Border Frame for Full Page styling */}
-              <div className="absolute inset-3 md:inset-6 border border-[#C49B5B]/20 pointer-events-none rounded-2xl z-10" />
-              <div className="absolute inset-4 md:inset-7 border-2 border-[#C49B5B]/10 pointer-events-none rounded-2xl z-10" />
+              <div className="absolute inset-3 md:inset-6 border border-[#C49B5B]/30 pointer-events-none rounded-2xl z-10">
+                {/* Corner Flourishes */}
+                <svg className="absolute -top-2 -left-2 w-8 h-8 md:w-12 md:h-12 text-[#C49B5B]/60" viewBox="0 0 100 100" fill="currentColor"><path d="M10,0 L10,30 Q10,70 70,70 L70,100 L0,100 Z" /><path d="M30,0 L30,20 Q30,50 60,50 L60,80 L0,80 Z" opacity="0.5"/></svg>
+                <svg className="absolute -top-2 -right-2 w-8 h-8 md:w-12 md:h-12 text-[#C49B5B]/60 rotate-90" viewBox="0 0 100 100" fill="currentColor"><path d="M10,0 L10,30 Q10,70 70,70 L70,100 L0,100 Z" /><path d="M30,0 L30,20 Q30,50 60,50 L60,80 L0,80 Z" opacity="0.5"/></svg>
+                <svg className="absolute -bottom-2 -right-2 w-8 h-8 md:w-12 md:h-12 text-[#C49B5B]/60 rotate-180" viewBox="0 0 100 100" fill="currentColor"><path d="M10,0 L10,30 Q10,70 70,70 L70,100 L0,100 Z" /><path d="M30,0 L30,20 Q30,50 60,50 L60,80 L0,80 Z" opacity="0.5"/></svg>
+                <svg className="absolute -bottom-2 -left-2 w-8 h-8 md:w-12 md:h-12 text-[#C49B5B]/60 -rotate-90" viewBox="0 0 100 100" fill="currentColor"><path d="M10,0 L10,30 Q10,70 70,70 L70,100 L0,100 Z" /><path d="M30,0 L30,20 Q30,50 60,50 L60,80 L0,80 Z" opacity="0.5"/></svg>
+              </div>
+              <div className="absolute inset-4 md:inset-7 border-2 border-[#C49B5B]/20 pointer-events-none rounded-2xl z-10" />
+              <div className="holographic-sweep rounded-3xl mix-blend-overlay" />
 
               {/* Overall Ambient Lighting Effects (Warm Stage Glows) */}
               <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-2xl z-0">
@@ -323,21 +364,15 @@ export default function Template1({ event, guestName }: Props) {
                   </div>
                 </div>
 
-                {/* 3D Gold Medallion / Seal on top of the ribbon (Anchors it) */}
-                <div className="absolute top-1 md:top-1.5 left-1/2 -translate-x-1/2 w-8 h-8 md:w-12 md:h-12 z-30">
-                  <div className="w-full h-full rounded-full bg-gradient-to-br from-[#FFF5C3] via-[#C49B5B] to-[#785A24] p-[1.5px] shadow-[0_3px_8px_rgba(0,0,0,0.4)] flex items-center justify-center">
-                    <div className="w-full h-full rounded-full bg-gradient-to-tr from-[#9E782F] to-[#E6C575] flex items-center justify-center border border-[#FFF5C3]/40">
-                      <span className="text-[#FFF] text-[9px] md:text-[13px] font-serif drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]">🎓</span>
+                {/* 3D Royal Red Wax Seal */}
+                <div className="absolute top-0 md:top-0.5 left-1/2 -translate-x-1/2 w-10 h-10 md:w-14 md:h-14 z-30 wax-seal-anim drop-shadow-[0_8px_10px_rgba(0,0,0,0.6)]">
+                  <div className="w-full h-full rounded-full bg-gradient-to-br from-[#d93838] via-[#8B1A1A] to-[#4a0808] p-[1.5px] shadow-[inset_0_3px_5px_rgba(255,255,255,0.4),inset_0_-3px_5px_rgba(0,0,0,0.6)] flex items-center justify-center">
+                    <div className="w-full h-full rounded-full bg-gradient-to-tr from-[#630b0b] to-[#b32424] flex items-center justify-center border-[2px] border-[#4a0808]/80 shadow-[inset_0_2px_4px_rgba(0,0,0,0.5)]">
+                      <span className="text-[#F3E5AB] text-[12px] md:text-[18px] font-serif drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)] opacity-90" style={{ fontFamily: "'Great Vibes', cursive" }}>{event.hostName.charAt(0)}</span>
                     </div>
                   </div>
-                  {/* Glowing dynamic star flare effect */}
-                  <div className="absolute -top-1 -right-1 w-4 h-4 text-[#FFF5C3] star-glint-active pointer-events-none z-40">
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M12 0l3 9 9 3-9 3-3 9-3-9-9-3 9-3z" />
-                    </svg>
-                  </div>
-                  {/* Subtle shine glint */}
-                  <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-transparent via-white/25 to-transparent pointer-events-none" />
+                  {/* Subtle shine glint on wax seal */}
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-transparent via-white/20 to-transparent pointer-events-none" />
                 </div>
 
                 {/* Golden Fringe Tassel hanging from the pointed tip */}
@@ -410,8 +445,13 @@ export default function Template1({ event, guestName }: Props) {
                   transition={{ delay: 1.2, type: "spring", stiffness: 100, damping: 12 }}
                   className="mb-1 w-full px-2"
                 >
-                  <h1 className="text-[2.2rem] sm:text-[2.8rem] md:text-[4.5rem] leading-[1.2] -rotate-1 font-normal font-serif gold-foil-text break-words whitespace-normal max-w-full mx-auto" style={{ fontFamily: "'Great Vibes', cursive" }}>
+                  <h1 className="relative inline-block text-[2.2rem] sm:text-[2.8rem] md:text-[4.5rem] leading-[1.2] -rotate-1 font-normal font-serif gold-foil-text break-words whitespace-normal max-w-full mx-auto" style={{ fontFamily: "'Great Vibes', cursive" }}>
                     {event.hostName}
+                    <div className="absolute -top-4 -right-8 md:-right-12 w-8 h-8 md:w-12 md:h-12 text-[#FFF5C3] star-glint-active pointer-events-none z-40 mix-blend-screen">
+                      <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0l3 9 9 3-9 3-3 9-3-9-9-3 9-3z" />
+                      </svg>
+                    </div>
                   </h1>
                 </motion.div>
 
