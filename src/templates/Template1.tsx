@@ -78,6 +78,8 @@ export default function Template1({ event, guestName }: Props) {
   }
 
   const isGrad = event.eventType !== 'birthday'
+  const yearMatch = event.timeLine3?.match(/\d{4}/) || event.subtitle?.match(/\d{4}/);
+  const dynamicYear = yearMatch ? yearMatch[0] : new Date().getFullYear().toString();
 
   return (
     <div className="w-full min-h-[100dvh] bg-[#FDFBF7]" style={{ fontFamily: "'Be Vietnam Pro', sans-serif" }}>
@@ -266,21 +268,20 @@ export default function Template1({ event, guestName }: Props) {
                   <div className="absolute inset-3 border-[1.5px] border-[#C49B5B]/40 pointer-events-none" />
                   <div className="absolute inset-4 border border-[#C49B5B]/15 pointer-events-none" />
                   
-                  {/* Centered Wax Seal with Velvet Ribbon Tails */}
-                  <div className="absolute -top-7 md:-top-9 left-1/2 -translate-x-1/2 flex flex-col items-center z-50">
-                    {/* Ribbon Tails */}
-                    <div className="relative flex justify-center w-full h-0 z-0">
-                      <div className="absolute top-8 md:top-10 left-1/2 w-6 md:w-8 h-10 md:h-14 bg-gradient-to-br from-[#8B1A1A] via-[#A22222] to-[#4C0B0B] transform rotate-[25deg] -translate-x-full shadow-[2px_2px_5px_rgba(0,0,0,0.5)] border-l border-[#F3E5AB]/40 origin-top" style={{ clipPath: 'polygon(0 0, 100% 0, 100% 100%, 50% 80%, 0 100%)' }} />
-                      <div className="absolute top-8 md:top-10 right-1/2 w-6 md:w-8 h-12 md:h-16 bg-gradient-to-bl from-[#A22222] via-[#8B1A1A] to-[#4C0B0B] transform -rotate-[15deg] translate-x-full shadow-[-2px_2px_5px_rgba(0,0,0,0.5)] border-r border-[#F3E5AB]/40 origin-top" style={{ clipPath: 'polygon(0 0, 100% 0, 100% 100%, 50% 80%, 0 100%)', zIndex: -1 }} />
-                    </div>
-                    {/* Wax Seal */}
-                    <div className="w-14 h-14 md:w-18 md:h-18 wax-seal-anim drop-shadow-[0_8px_10px_rgba(0,0,0,0.6)] relative z-10">
-                      <div className="w-full h-full rounded-full bg-gradient-to-br from-[#d93838] via-[#8B1A1A] to-[#4a0808] p-[1.5px] shadow-[inset_0_3px_5px_rgba(255,255,255,0.4),inset_0_-3px_5px_rgba(0,0,0,0.6)] flex items-center justify-center">
-                        <div className="w-full h-full rounded-full bg-gradient-to-tr from-[#630b0b] to-[#b32424] flex items-center justify-center border-[2px] border-[#4a0808]/80 shadow-[inset_0_2px_4px_rgba(0,0,0,0.5)]">
-                          <span className="text-[#F3E5AB] text-[16px] md:text-[22px] font-serif drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)] opacity-90" style={{ fontFamily: "'Great Vibes', cursive" }}>{event.hostName.charAt(0)}</span>
-                        </div>
+                  {/* Dynamic Year Watermark */}
+                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden z-0 opacity-[0.04]">
+                    <span className="text-[35vw] md:text-[280px] font-bold text-[#C49B5B] tracking-[-0.05em] leading-none select-none" style={{ fontFamily: "'Playfair Display', serif" }}>
+                      {dynamicYear}
+                    </span>
+                  </div>
+
+                  {/* Premium Gold Emblem / Monogram */}
+                  <div className="absolute -top-10 left-1/2 -translate-x-1/2 flex flex-col items-center z-50">
+                    <div className="w-20 h-20 bg-[#FDFBF7] rounded-full border-[1.5px] border-[#C49B5B]/50 shadow-[0_15px_30px_rgba(92,10,10,0.08),inset_0_4px_10px_rgba(196,155,91,0.15)] flex items-center justify-center p-1.5 backdrop-blur-md">
+                      <div className="w-full h-full rounded-full border-[1px] border-[#C49B5B]/40 border-dashed flex items-center justify-center relative">
+                        <div className="absolute inset-0 rounded-full border border-[#C49B5B]/20 scale-[1.1]" />
+                        <span className="text-[#C49B5B] text-3xl font-serif drop-shadow-sm opacity-90" style={{ fontFamily: "'Great Vibes', cursive" }}>{event.hostName.charAt(0)}</span>
                       </div>
-                      <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-transparent via-white/20 to-transparent pointer-events-none" />
                     </div>
                   </div>
 
