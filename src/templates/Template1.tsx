@@ -248,6 +248,110 @@ export default function Template1({ event, guestName }: Props) {
                 />
               </div>
 
+              {/* ── REDESIGNED ULTRA-PREMIUM DUAL-LAYER RIBBON ── */}
+              <motion.div
+                initial={{ y: '-110%' }}
+                animate={{ y: 0 }}
+                whileHover={{ rotateY: -15, rotateZ: -1, scale: 1.05, y: 4 }}
+                transition={{ 
+                  y: { type: "spring", stiffness: 80, damping: 12, delay: 0.2 },
+                  default: { duration: 0.3 }
+                }}
+                className="absolute top-0 right-[5%] md:right-[15%] w-[50px] md:w-[82px] h-[52%] md:h-[55%] z-50 origin-top cursor-pointer"
+                style={{ perspective: '800px' }}
+              >
+                {/* Backing Gold Ribbon Layer */}
+                <div 
+                  className="absolute inset-0 z-0"
+                  style={{
+                    background: 'linear-gradient(160deg, #FFF5C3 0%, #E6C575 25%, #C49B5B 50%, #9E782F 75%, #785A24 100%)',
+                    clipPath: 'polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%)',
+                    transform: 'scaleX(1.08) scaleY(1.025)',
+                    transformOrigin: 'top center',
+                    filter: 'drop-shadow(-4px 4px 8px rgba(0,0,0,0.35))'
+                  }}
+                />
+
+                {/* Main Velvet Crimson Ribbon (Front Layer) */}
+                <div 
+                  className="absolute inset-0 z-10 overflow-hidden flex flex-col"
+                  style={{
+                    background: 'linear-gradient(135deg, #8B1A1A 0%, #A22222 15%, #4C0B0B 16%, #4C0B0B 32%, #8B1A1A 45%, #A22222 60%, #4C0B0B 61%, #4C0B0B 78%, #8B1A1A 90%, #A22222 100%)',
+                    clipPath: 'polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%)',
+                    boxShadow: 'inset 1px 0 6px rgba(255,255,255,0.08), inset -1px 0 6px rgba(0,0,0,0.4)',
+                  }}
+                >
+                  <div className="absolute inset-0 pointer-events-none opacity-30 z-10 mix-blend-multiply"
+                    style={{ backgroundImage: 'repeating-linear-gradient(145deg, transparent, transparent 18px, rgba(0,0,0,0.45) 19px, rgba(0,0,0,0.45) 20px, transparent 21px, transparent 40px)' }}
+                  />
+
+                  <div className="absolute inset-y-0 left-[2px] md:left-[3px] w-[1px] md:w-[1.5px] bg-gradient-to-b from-[#F3E5AB] via-[#C49B5B] to-[#F3E5AB] opacity-80" />
+                  <div className="absolute inset-y-0 left-[4px] md:left-[6px] w-[0.5px] md:w-[1px] bg-gradient-to-b from-[#F3E5AB]/40 via-[#C49B5B]/40 to-[#F3E5AB]/40 opacity-60" />
+                  <div className="absolute inset-y-0 right-[2px] md:right-[3px] w-[1px] md:w-[1.5px] bg-gradient-to-b from-[#F3E5AB] via-[#C49B5B] to-[#F3E5AB] opacity-80" />
+                  <div className="absolute inset-y-0 right-[4px] md:right-[6px] w-[0.5px] md:w-[1px] bg-gradient-to-b from-[#F3E5AB]/40 via-[#C49B5B]/40 to-[#F3E5AB]/40 opacity-60" />
+                  
+                  <div className="absolute inset-0 opacity-[0.04] pointer-events-none"
+                    style={{ backgroundImage: `repeating-linear-gradient(0deg, transparent, transparent 1px, rgba(255,255,255,0.2) 1px, rgba(255,255,255,0.2) 2px)`, backgroundSize: '100% 3px' }}
+                  />
+
+                  <motion.div
+                    animate={{ y: ['-150%', '250%'] }}
+                    transition={{ duration: 4.5, repeat: Infinity, repeatDelay: 2.5, ease: [0.4, 0, 0.2, 1] }}
+                    className="absolute inset-x-0 h-[45%] pointer-events-none z-20"
+                    style={{ background: 'linear-gradient(135deg, transparent 20%, rgba(255,245,195,0.22) 45%, rgba(255,255,255,0.35) 50%, rgba(255,245,195,0.22) 55%, transparent 80%)', transform: 'skewY(-8deg)' }}
+                  />
+
+                  <div className="absolute inset-0 pointer-events-none"
+                    style={{ background: 'linear-gradient(135deg, transparent 30%, rgba(255,255,255,0.06) 45%, rgba(255,255,255,0.12) 50%, rgba(255,255,255,0.06) 55%, transparent 70%)' }}
+                  />
+
+                  <div className="flex flex-col items-center h-full relative z-10 pt-10 md:pt-14 pb-8 px-0.5">
+                    {event.universityLogo ? (
+                      <div className="relative mb-2 shrink-0">
+                        <div className="absolute -inset-1 bg-gradient-to-r from-[#F3E5AB] to-[#C49B5B] rounded-full blur-[1px] opacity-75" />
+                        <img src={event.universityLogo} className="relative w-7 h-7 md:w-11 md:h-11 object-contain bg-white rounded-full p-0.5 shadow-[0_2px_6px_rgba(0,0,0,0.35)] border border-[#C49B5B]/30" alt="" />
+                      </div>
+                    ) : (
+                      <div className="w-7 h-7 md:w-11 md:h-11 bg-gradient-to-br from-[#F3E5AB] to-[#C49B5B] rounded-full flex items-center justify-center text-[5px] md:text-[7px] font-bold text-[#3A1515] shadow-lg mb-2 shrink-0 border border-white/20">LOGO</div>
+                    )}
+                    <p className="text-[#F3E5AB]/60 text-[4px] md:text-[6.5px] tracking-[0.15em] uppercase text-center leading-tight px-0.5 mb-2 font-semibold max-w-[42px] md:max-w-none"
+                      style={{ writingMode: 'vertical-rl', transform: 'none', maxHeight: '60px' }}>
+                      {removeAccents(event.universityName)}
+                    </p>
+                    <div className="text-[#F3E5AB] text-[10px] md:text-[14px] my-1 drop-shadow-[0_1px_2px_rgba(0,0,0,0.4)] select-none">⚜</div>
+                    <div className="flex-1 flex items-center justify-center overflow-hidden">
+                      <h3 className="text-[#F3E5AB] text-[9px] md:text-[13px] font-serif font-bold tracking-[0.18em] uppercase whitespace-nowrap drop-shadow-[0_2px_3px_rgba(0,0,0,0.6)]"
+                        style={{ writingMode: 'vertical-rl', transform: 'none' }}>
+                        {removeAccents(event.hostName)}
+                      </h3>
+                    </div>
+                    <div className="shrink-0 mt-2">
+                      <p className="text-[#F3E5AB]/70 text-[5px] md:text-[7.5px] tracking-[0.1em] font-serif italic uppercase"
+                        style={{ writingMode: 'vertical-rl', transform: 'none' }}>
+                        {isGrad ? "Graduation" : "Birthday"}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* 3D Royal Red Wax Seal */}
+                <div className="absolute top-0 md:top-0.5 left-1/2 -translate-x-1/2 w-10 h-10 md:w-14 md:h-14 z-30 wax-seal-anim drop-shadow-[0_8px_10px_rgba(0,0,0,0.6)]">
+                  <div className="w-full h-full rounded-full bg-gradient-to-br from-[#d93838] via-[#8B1A1A] to-[#4a0808] p-[1.5px] shadow-[inset_0_3px_5px_rgba(255,255,255,0.4),inset_0_-3px_5px_rgba(0,0,0,0.6)] flex items-center justify-center">
+                    <div className="w-full h-full rounded-full bg-gradient-to-tr from-[#630b0b] to-[#b32424] flex items-center justify-center border-[2px] border-[#4a0808]/80 shadow-[inset_0_2px_4px_rgba(0,0,0,0.5)]">
+                      <span className="text-[#F3E5AB] text-[12px] md:text-[18px] font-serif drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)] opacity-90" style={{ fontFamily: "'Great Vibes', cursive" }}>{event.hostName.charAt(0)}</span>
+                    </div>
+                  </div>
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-transparent via-white/20 to-transparent pointer-events-none" />
+                </div>
+
+                {/* Golden Fringe Tassel hanging from the pointed tip */}
+                <div className="absolute bottom-[-16px] left-1/2 w-3 h-8 z-30 pointer-events-none animate-tassel-sway">
+                  <div className="w-2 md:w-3 h-2 md:h-3 rounded-full bg-gradient-to-br from-[#FFF5C3] via-[#C49B5B] to-[#785A24] mx-auto shadow-md" />
+                  <div className="w-[1px] md:w-[1.5px] h-1.5 md:h-2 bg-[#C49B5B] mx-auto" />
+                  <div className="w-2 md:w-3 h-3 md:h-4 mx-auto" style={{ background: 'linear-gradient(90deg, #785A24 0%, #C49B5B 25%, #FFF5C3 50%, #C49B5B 75%, #785A24 100%)', clipPath: 'polygon(0 0, 100% 0, 80% 100%, 50% 90%, 20% 100%)' }} />
+                </div>
+              </motion.div>
+
               {/* ── ULTRA VIP SYMMETRICAL CARD ── */}
               <div className="relative z-10 w-full max-w-[90vw] md:max-w-2xl mx-auto mt-12 md:mt-0 perspective-[1200px] pointer-events-auto">
                 
@@ -336,14 +440,6 @@ export default function Template1({ event, guestName }: Props) {
                     "{event.footerMessage}"
                   </p>
 
-                  {/* Wax Seal placed perfectly at the top edge of the card */}
-                  <div className="absolute -top-6 left-1/2 -translate-x-1/2 w-12 h-12 md:w-16 md:h-16 z-30 drop-shadow-[0_8px_10px_rgba(0,0,0,0.4)]">
-                    <div className="w-full h-full rounded-full bg-gradient-to-br from-[#d93838] via-[#8B1A1A] to-[#4a0808] p-[1.5px] shadow-[inset_0_3px_5px_rgba(255,255,255,0.4),inset_0_-3px_5px_rgba(0,0,0,0.6)] flex items-center justify-center">
-                      <div className="w-full h-full rounded-full bg-gradient-to-tr from-[#630b0b] to-[#b32424] flex items-center justify-center border-[2px] border-[#4a0808]/80 shadow-[inset_0_2px_4px_rgba(0,0,0,0.5)]">
-                        <span className="text-[#F3E5AB] text-[14px] md:text-[20px] font-serif drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)] opacity-90" style={{ fontFamily: "'Great Vibes', cursive" }}>{event.hostName.charAt(0)}</span>
-                      </div>
-                    </div>
-                  </div>
                 </motion.div>
               </div>
             </div>
