@@ -163,8 +163,8 @@ export default function Template1({ event, guestName }: Props) {
               @keyframes waxSealDrop {
                 0% { transform: scale(3) translateY(-50px); opacity: 0; filter: blur(5px); }
                 50% { transform: scale(0.9) translateY(2px); opacity: 1; filter: blur(0px); }
-                70% { transform: scale(1.05) translateY(-1px); }
-                100% { transform: scale(1) translateY(0); }
+                70% { transform: scale(1.05) translateY(-1px); opacity: 1; }
+                100% { transform: scale(1) translateY(0); opacity: 1; }
               }
               .wax-seal-anim {
                 animation: waxSealDrop 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
