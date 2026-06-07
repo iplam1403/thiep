@@ -97,10 +97,10 @@ export default function Template1({ event, guestName }: Props) {
                 </div>
               </motion.div>
               <p className="text-[#C49B5B]/60 text-[10px] tracking-[0.3em] uppercase mb-3">Bạn nhận được một lời mời</p>
-              <h2 className="text-[#C49B5B] text-2xl mb-2" style={{ fontFamily: "'Great Vibes', cursive" }}>
+              <h2 className="text-[#C49B5B] text-xl md:text-2xl mb-2" style={{ fontFamily: "'Playfair Display', serif" }}>
                 {isGrad ? 'Thiệp Mời Tốt Nghiệp' : 'Thiệp Mời Sinh Nhật'}
               </h2>
-              <p className="text-[#C49B5B]/40 text-xs mb-12 tracking-wider">từ {event.hostName}</p>
+              <p className="text-[#C49B5B]/40 text-xs mb-10 tracking-wider">từ {event.hostName}</p>
               <motion.div animate={{ scale: [1, 1.05, 1] }} transition={{ duration: 2, repeat: Infinity }}
                 className="inline-flex items-center gap-2 px-8 py-3 rounded-full border border-[#C49B5B]/30 bg-[#C49B5B]/5">
                 <span className="text-[#C49B5B]/80 text-sm font-medium tracking-wider">Nhấn để mở</span>
@@ -187,7 +187,7 @@ export default function Template1({ event, guestName }: Props) {
               }
             `}</style>
 
-            <div className="relative w-full max-w-5xl min-h-[100dvh] md:min-h-[85vh] bg-[#FDFBF7] md:rounded-3xl md:shadow-[0_20px_50px_rgba(90,40,40,0.15)] md:border md:border-[#C49B5B]/15 overflow-hidden flex flex-col items-center justify-center p-4 md:p-12">
+            <div className="relative w-full max-w-5xl min-h-[100dvh] md:min-h-[85vh] bg-[#FDFBF7] md:rounded-3xl md:shadow-[0_20px_50px_rgba(90,40,40,0.15)] md:border md:border-[#C49B5B]/15 overflow-hidden flex flex-col items-center justify-center py-4 px-2 md:p-12">
               
               {/* Music Toggle Button */}
               <motion.button 
@@ -257,7 +257,7 @@ export default function Template1({ event, guestName }: Props) {
                   initial={{ opacity: 0, y: 30 }} 
                   animate={{ opacity: 1, y: 0 }} 
                   transition={{ delay: 0.5, duration: 1 }}
-                  className="relative w-full bg-[#FDFBF7]/90 backdrop-blur-xl shadow-[0_30px_60px_rgba(90,40,40,0.15)] rounded-sm border border-[#C49B5B]/30 flex flex-col px-4 md:px-12 py-12 md:py-16"
+                  className="relative w-full bg-[#FDFBF7]/90 backdrop-blur-xl shadow-[0_30px_60px_rgba(90,40,40,0.15)] rounded-sm border border-[#C49B5B]/30 flex flex-col px-3 md:px-12 py-8 md:py-16"
                 >
                   {/* Intricate Gold SVG Border Frame - Thinner and more elegant */}
                   <div className="absolute inset-4 border-[0.5px] border-[#C49B5B]/60 pointer-events-none" />
@@ -282,7 +282,7 @@ export default function Template1({ event, guestName }: Props) {
                       <div className="w-full h-full rounded-full bg-[#8B1A1A] p-[2px] flex items-center justify-center shadow-[inset_0_4px_8px_rgba(255,255,255,0.4),inset_0_-4px_8px_rgba(0,0,0,0.6),0_2px_4px_rgba(0,0,0,0.5)]" style={{ filter: 'url(#waxTexture)' }}>
                         <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#d93838]/60 via-transparent to-[#4a0808]/80 mix-blend-overlay pointer-events-none" />
                         <div className="w-full h-full rounded-full bg-[#7A1515] flex items-center justify-center border-[1.5px] border-[#4a0808]/50 shadow-[inset_0_3px_5px_rgba(0,0,0,0.4)]">
-                          <span className="text-[#F3E5AB] text-[20px] md:text-[26px] font-serif drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)] opacity-95 relative z-10" style={{ fontFamily: "'Great Vibes', cursive" }}>{event.hostName.charAt(0)}</span>
+                          <span className="text-[#F3E5AB] text-[20px] md:text-[26px] font-serif drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)] opacity-95 relative z-10" style={{ fontFamily: "'Playfair Display', serif" }}>{event.hostName.charAt(0)}</span>
                           <div className="absolute inset-1 rounded-full bg-gradient-to-tr from-transparent via-white/10 to-transparent pointer-events-none" />
                         </div>
                       </div>
@@ -310,34 +310,34 @@ export default function Template1({ event, guestName }: Props) {
                     ) : (
                       <div className="w-10 h-12 bg-gradient-to-b from-[#1e3a8a] to-[#172554] rounded-b-lg flex items-center justify-center text-white text-[6px] font-medium shadow-sm mb-6">LOGO</div>
                     )}
-                    <h3 className="text-[10px] md:text-[11px] font-medium text-[#3a2e2b] leading-relaxed uppercase tracking-[0.3em] mb-2 text-center">{event.universityName}</h3>
-                    <p className="text-[7px] md:text-[8px] text-[#C49B5B] uppercase tracking-[0.4em] mb-6 text-center">{event.universitySubName}</p>
+                    <h3 className="text-[10px] md:text-[11px] font-medium text-[#3a2e2b] leading-relaxed uppercase tracking-[0.1em] md:tracking-[0.2em] mb-2 text-center w-full max-w-full px-2 whitespace-nowrap overflow-hidden text-ellipsis">{event.universityName}</h3>
+                    <p className="text-[7px] md:text-[8px] text-[#C49B5B] uppercase tracking-[0.4em] mb-4 text-center">{event.universitySubName}</p>
                   </div>
 
                   {/* Header Divider */}
-                  <div className="w-[80%] mx-auto h-[0.5px] bg-gradient-to-r from-transparent via-[#C49B5B]/60 to-transparent mb-10 z-10 relative" />
+                  <div className="w-[80%] mx-auto h-[0.5px] bg-gradient-to-r from-transparent via-[#C49B5B]/60 to-transparent mb-6 z-10 relative" />
 
                   {/* ================= BODY SECTION ================= */}
                   <div className="w-full flex flex-col items-center z-10 relative">
-                    <p className="text-[10px] md:text-[11px] italic text-[#8B1A1A] mb-3" style={{ fontFamily: "'Playfair Display', serif" }}>Dear</p>
-                    <p className="font-semibold text-lg md:text-xl text-[#3a2e2b] tracking-[0.15em] uppercase mb-10 border-b-[0.5px] border-[#C49B5B]/40 pb-3 px-12 min-w-[240px] text-center">{guestName}</p>
+                    <p className="text-[10px] md:text-[11px] italic text-[#8B1A1A] mb-2" style={{ fontFamily: "'Playfair Display', serif" }}>Dear</p>
+                    <p className="font-semibold text-lg md:text-xl text-[#3a2e2b] tracking-[0.15em] uppercase mb-6 border-b-[0.5px] border-[#C49B5B]/40 pb-2 px-12 min-w-[240px] text-center">{guestName}</p>
 
-                    <p className="text-[9px] md:text-[10px] text-gray-500 italic tracking-[0.2em] mb-6 text-center">
+                    <p className="text-[9px] md:text-[10px] text-gray-500 italic tracking-[0.2em] mb-4 text-center">
                       {isGrad ? 'Thân mời bạn đến dự lễ tốt nghiệp của' : 'Trân trọng kính mời bạn đến dự tiệc sinh nhật của'}
                     </p>
 
-                    <h1 className="text-[2.5rem] md:text-[4rem] leading-[1.2] font-normal font-serif gold-foil-text mb-6 text-center" style={{ fontFamily: "'Great Vibes', cursive" }}>
+                    <h1 className="text-[1.8rem] md:text-[3rem] leading-[1.2] font-semibold font-serif gold-foil-text mb-4 text-center px-4" style={{ fontFamily: "'Playfair Display', serif" }}>
                       {event.hostName}
                     </h1>
 
-                    <h2 className="text-xl md:text-[2rem] font-medium text-[#3a2e2b] tracking-[0.3em] uppercase leading-tight mb-3 text-center" style={{ fontFamily: "'Playfair Display', serif" }}>
+                    <h2 className="text-xl md:text-[2rem] font-medium text-[#3a2e2b] tracking-[0.2em] md:tracking-[0.3em] uppercase leading-tight mb-2 text-center" style={{ fontFamily: "'Playfair Display', serif" }}>
                       {event.title}
                     </h2>
-                    <p className="text-[8px] md:text-[9px] text-[#C49B5B] tracking-[0.4em] uppercase font-semibold mb-10 text-center">{event.subtitle}</p>
+                    <p className="text-[8px] md:text-[9px] text-[#C49B5B] tracking-[0.4em] uppercase font-semibold mb-6 text-center">{event.subtitle}</p>
                   </div>
 
                   {/* Footer Divider */}
-                  <div className="w-full flex justify-center items-center mb-10 z-10 relative">
+                  <div className="w-full flex justify-center items-center mb-6 z-10 relative">
                     <div className="h-[0.5px] w-16 md:w-24 bg-[#C49B5B]/60" />
                     <div className="w-1.5 h-1.5 rotate-45 border-[0.5px] border-[#C49B5B] mx-4" />
                     <div className="h-[0.5px] w-16 md:w-24 bg-[#C49B5B]/60" />
@@ -345,7 +345,7 @@ export default function Template1({ event, guestName }: Props) {
 
                   {/* ================= FOOTER SECTION ================= */}
                   <div className="w-full z-10 relative flex flex-col items-center">
-                    <div className="flex flex-col md:flex-row w-full justify-between items-center gap-10 md:gap-4 px-4 md:px-12 mb-10">
+                    <div className="flex flex-col md:flex-row w-full justify-between items-center gap-6 md:gap-4 px-2 md:px-12 mb-6">
                       <div className="flex flex-col items-center md:w-1/2">
                         <p className="text-[8px] md:text-[9px] text-[#C49B5B] uppercase tracking-[0.4em] mb-3 font-semibold">Vào lúc</p>
                         <p className="text-xs md:text-sm font-medium text-[#3a2e2b] tracking-[0.2em] uppercase">{event.timeLine1}</p>

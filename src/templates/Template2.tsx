@@ -163,7 +163,7 @@ export default function Template2({ event, guestName }: Props) {
                   </motion.div>
                 )}
                 <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6, duration: 1 }} className="w-full">
-                  <p className="text-[10px] md:text-[11px] text-white/60 font-light tracking-[0.4em] uppercase mb-2 break-words whitespace-normal">{event.universityName}</p>
+                  <p className="text-[10px] md:text-[11px] text-white/60 font-light tracking-[0.1em] md:tracking-[0.2em] uppercase mb-2 px-2 whitespace-nowrap overflow-hidden text-ellipsis w-full max-w-full">{event.universityName}</p>
                   <p className="text-[7px] md:text-[8px] text-white/30 tracking-[0.3em] uppercase">{event.universitySubName}</p>
                 </motion.div>
 
@@ -177,7 +177,7 @@ export default function Template2({ event, guestName }: Props) {
                 </motion.div>
 
                 <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.4, duration: 1.5 }}>
-                  <h1 className="text-[3rem] md:text-[5rem] font-light tracking-[0.15em] uppercase leading-[1.1] mb-4 break-words whitespace-normal drop-shadow-[0_0_30px_rgba(255,255,255,0.3)]"
+                  <h1 className="text-[2rem] md:text-[3.5rem] font-light tracking-[0.15em] uppercase leading-[1.1] mb-4 break-words whitespace-normal drop-shadow-[0_0_30px_rgba(255,255,255,0.3)] px-2"
                     style={{ fontFamily: "'Playfair Display', serif" }}>
                     {event.hostName}
                   </h1>

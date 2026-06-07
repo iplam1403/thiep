@@ -113,7 +113,7 @@ export default function Template4({ event, guestName }: Props) {
                          style={{ clipPath: 'polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px)' }}>ID</div>
                   )}
 
-                  <h4 className="text-[10px] md:text-xs font-mono font-bold tracking-[0.5em] text-[#00f0ff] uppercase mb-4 break-words px-2">
+                  <h4 className="text-[10px] md:text-xs font-mono font-bold tracking-[0.2em] md:tracking-[0.5em] text-[#00f0ff] uppercase mb-4 px-2 whitespace-nowrap overflow-hidden text-ellipsis w-full max-w-full">
                     {event.universityName || 'TARGET LOCATED'}
                   </h4>
 
@@ -130,7 +130,7 @@ export default function Template4({ event, guestName }: Props) {
                   </p>
 
                   {/* Host Name - Glitch Effect */}
-                  <h1 className="text-[3rem] md:text-[5rem] font-black uppercase tracking-[0.1em] my-4 leading-[1] break-words whitespace-normal w-full px-2 text-white"
+                  <h1 className="text-[2rem] md:text-[3.5rem] font-black uppercase tracking-[0.1em] my-4 leading-[1] break-words whitespace-normal w-full px-2 text-white"
                     style={{ textShadow: '3px 0px 0px rgba(0,240,255,0.5), -3px 0px 0px rgba(255,0,127,0.5)' }}>
                     {event.hostName}
                   </h1>

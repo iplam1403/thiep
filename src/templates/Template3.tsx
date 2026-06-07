@@ -127,7 +127,7 @@ export default function Template3({ event, guestName }: Props) {
                   </div>
                 )}
                 
-                <h4 className="text-[9px] md:text-[10px] font-sans tracking-[0.4em] text-[#D4AF37] uppercase mb-4 break-words max-w-full px-4 font-light">
+                <h4 className="text-[9px] md:text-[10px] font-sans tracking-[0.15em] md:tracking-[0.4em] text-[#D4AF37] uppercase mb-4 px-2 whitespace-nowrap overflow-hidden text-ellipsis w-full max-w-full font-light">
                   {event.universityName || 'INVITATION'}
                 </h4>
                 
@@ -150,7 +150,7 @@ export default function Template3({ event, guestName }: Props) {
                 </p>
 
                 {/* Host Name */}
-                <h1 className="text-[2.5rem] md:text-[4.5rem] font-light tracking-[0.15em] my-6 md:my-8 font-serif break-words whitespace-normal w-full px-2 gold-foil uppercase leading-[1.1]">
+                <h1 className="text-[2rem] md:text-[3.5rem] font-light tracking-[0.15em] my-6 md:my-8 font-serif break-words whitespace-normal w-full px-2 gold-foil uppercase leading-[1.1]">
                   {event.hostName}
                 </h1>
 
