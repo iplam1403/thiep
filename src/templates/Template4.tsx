@@ -82,32 +82,32 @@ export default function Template4({ event, guestName }: Props) {
                 
                 {/* University Logo Badge */}
                 {event.universityLogo ? (
-                  <div className="w-16 h-16 p-2 rounded-2xl bg-white/5 border border-white/10 shadow-[0_0_20px_rgba(255,255,255,0.05)] mb-8 flex items-center justify-center">
+                  <div className="w-14 h-14 md:w-16 md:h-16 p-2 rounded-2xl bg-white/5 border border-white/10 shadow-[0_0_20px_rgba(255,255,255,0.05)] mb-6 md:mb-8 flex items-center justify-center">
                     <img src={event.universityLogo} className="w-full h-full object-contain" alt="" />
                   </div>
                 ) : (
-                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#ff007f]/20 to-[#00f0ff]/20 border border-white/10 flex items-center justify-center text-xs font-bold tracking-widest text-[#00f0ff] mb-8 shadow-lg">CYBER</div>
+                  <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br from-[#ff007f]/20 to-[#00f0ff]/20 border border-white/10 flex items-center justify-center text-[10px] md:text-xs font-bold tracking-widest text-[#00f0ff] mb-6 md:mb-8 shadow-lg">CYBER</div>
                 )}
 
-                <h4 className="text-[10px] md:text-xs font-bold tracking-[0.4em] text-[#00f0ff] uppercase mb-4 drop-shadow-[0_0_5px_rgba(0,240,255,0.4)]">
+                <h4 className="text-[10px] md:text-xs font-bold tracking-[0.4em] text-[#00f0ff] uppercase mb-4 drop-shadow-[0_0_5px_rgba(0,240,255,0.4)] break-words max-w-full px-2">
                   {event.universityName || 'SPECIAL EVENT'}
                 </h4>
 
                 {/* Dear guests */}
-                <div className="my-8 relative">
+                <div className="my-6 md:my-8 relative w-full px-4">
                   <div className="absolute inset-0 bg-[#ff007f]/5 blur-lg rounded-full" />
-                  <div className="relative border-x border-[#ff007f]/20 px-8 py-3 bg-white/[0.02] border border-white/5 rounded-2xl">
-                    <span className="text-xs text-zinc-500 uppercase tracking-widest block mb-1">Guests of Honour</span>
-                    <span className="text-xl md:text-3xl font-extrabold text-white tracking-wide">{guestName}</span>
+                  <div className="relative border-x border-[#ff007f]/20 px-4 md:px-8 py-3 bg-white/[0.02] border border-white/5 rounded-2xl">
+                    <span className="text-[10px] md:text-xs text-zinc-500 uppercase tracking-widest block mb-1">Guests of Honour</span>
+                    <span className="text-xl md:text-3xl font-extrabold text-white tracking-wide break-words max-w-full">{guestName}</span>
                   </div>
                 </div>
 
-                <p className="text-xs md:text-sm text-zinc-400 tracking-wider mb-2">
+                <p className="text-[10px] md:text-sm text-zinc-400 tracking-wider mb-2 px-4 leading-relaxed">
                   {isGrad ? 'Join the neon night celebrating the graduation of' : 'Join the neon party celebrating the birthday of'}
                 </p>
 
                 {/* Host Name */}
-                <h1 className="text-[2.5rem] md:text-[4.5rem] font-black uppercase tracking-wider my-4"
+                <h1 className="text-[2.2rem] sm:text-[3rem] md:text-[4.5rem] font-black uppercase tracking-wider my-4 leading-[1.1] break-words whitespace-normal w-full px-2"
                   style={{
                     background: 'linear-gradient(to bottom, #ffffff, #dcdcf0, #a2a2d0)',
                     WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent'
@@ -116,29 +116,31 @@ export default function Template4({ event, guestName }: Props) {
                 </h1>
 
                 {/* Event Title */}
-                <h2 className="text-2xl md:text-4xl font-extrabold tracking-[0.15em] bg-gradient-to-r from-[#ff007f] via-white to-[#00f0ff] bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(255,0,127,0.4)] uppercase">
+                <h2 className="text-xl md:text-4xl font-extrabold tracking-[0.15em] bg-gradient-to-r from-[#ff007f] via-white to-[#00f0ff] bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(255,0,127,0.4)] uppercase break-words max-w-full px-2">
                   {event.title}
                 </h2>
                 
-                <p className="text-xs text-zinc-500 tracking-[0.3em] uppercase mt-2 mb-10">
+                <p className="text-[9px] md:text-xs text-zinc-500 tracking-[0.3em] uppercase mt-2 mb-8 md:mb-10 break-words px-4">
                   {event.subtitle}
                 </p>
 
                 {/* Time & location detail boxes */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-xl my-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-xl my-4 md:my-6 px-2 md:px-0">
                   {/* Time box */}
-                  <div className="bg-white/[0.02] border border-white/[0.06] rounded-2xl p-6 text-center shadow-inner">
-                    <span className="text-[9px] text-[#00f0ff] font-bold tracking-widest uppercase block mb-3">SCHEDULE</span>
-                    <span className="text-base font-extrabold text-white block mb-1">{event.timeLine1}</span>
-                    <span className="text-xs font-semibold text-[#ff007f] block uppercase tracking-wider">{event.timeLine2}</span>
-                    <span className="text-xs text-zinc-400 mt-1 block">{event.timeLine3}</span>
+                  <div className="bg-white/[0.02] border border-white/[0.06] rounded-2xl p-5 md:p-6 text-center shadow-inner relative overflow-hidden group hover:border-[#00f0ff]/30 transition-colors">
+                    <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#00f0ff]/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <span className="text-[8px] md:text-[9px] text-[#00f0ff] font-bold tracking-widest uppercase block mb-2 md:mb-3">SCHEDULE</span>
+                    <span className="text-sm md:text-base font-extrabold text-white block mb-1 break-words">{event.timeLine1}</span>
+                    <span className="text-[10px] md:text-xs font-semibold text-[#ff007f] block uppercase tracking-wider break-words">{event.timeLine2}</span>
+                    <span className="text-[10px] md:text-xs text-zinc-400 mt-1 block break-words">{event.timeLine3}</span>
                   </div>
 
                   {/* Location box */}
-                  <div className="bg-white/[0.02] border border-white/[0.06] rounded-2xl p-6 text-center shadow-inner">
-                    <span className="text-[9px] text-[#ff007f] font-bold tracking-widest uppercase block mb-3">DESTINATION</span>
-                    <span className="text-base font-extrabold text-white block truncate px-2">{event.locationLine1}</span>
-                    <span className="text-xs text-zinc-400 mt-2 block leading-relaxed px-2 truncate">{event.locationLine2}</span>
+                  <div className="bg-white/[0.02] border border-white/[0.06] rounded-2xl p-5 md:p-6 text-center shadow-inner relative overflow-hidden group hover:border-[#ff007f]/30 transition-colors">
+                    <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#ff007f]/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <span className="text-[8px] md:text-[9px] text-[#ff007f] font-bold tracking-widest uppercase block mb-2 md:mb-3">DESTINATION</span>
+                    <span className="text-sm md:text-base font-extrabold text-white block px-2 break-words whitespace-normal">{event.locationLine1}</span>
+                    <span className="text-[10px] md:text-xs text-zinc-400 mt-2 block leading-relaxed px-2 break-words whitespace-normal">{event.locationLine2}</span>
                   </div>
                 </div>
 

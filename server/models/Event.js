@@ -15,6 +15,7 @@ const EventSchema = new mongoose.Schema({
   locationLine2: String,
   footerMessage: String,
   templateId: { type: String, default: 'template1' },
+  userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   createdAt: { type: Date, default: Date.now }
 });
 

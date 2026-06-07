@@ -1,5 +1,11 @@
+export interface IUser {
+  _id: string;
+  username: string;
+}
+
 export interface IEvent {
   _id: string;
+  userId?: string;
   eventType: string;
   hostName: string;
   universityName: string;

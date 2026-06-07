@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import { useNavigate, Link } from 'react-router-dom'
 import api from '../api'
 
 export default function BuilderPage() {
@@ -14,6 +14,54 @@ export default function BuilderPage() {
     locationLine2: '', footerMessage: 'Sự hiện diện của bạn là niềm vinh hạnh',
     templateId: 'template1'
   })
+  const [hasSavedData, setHasSavedData] = useState(false)
+  const [user, setUser] = useState<{ _id: string, username: string } | null>(null)
+
+  useEffect(() => {
+    // Check user auth
+    const storedUser = localStorage.getItem('auth_user')
+    if (storedUser) {
+      setUser(JSON.parse(storedUser))
+    }
+    // Check localStorage on mount
+    try {
+      const saved = localStorage.getItem('last_event_builder_data')
+      if (saved) {
+        setHasSavedData(true)
+      }
+    } catch (e) {
+      console.error(e)
+    }
+  }, [])
+
+  const handleRestore = () => {
+    try {
+      const saved = localStorage.getItem('last_event_builder_data')
+      if (saved) {
+        const data = JSON.parse(saved)
+        setFormData({
+          hostName: data.hostName || '',
+          universityName: data.universityName || '',
+          universitySubName: data.universitySubName || '',
+          universityLogo: data.universityLogo || '',
+          title: data.title || 'GRADUATION',
+          subtitle: data.subtitle || 'Ceremony 2026',
+          timeLine1: data.timeLine1 || '9:00 - 10:00',
+          timeLine2: data.timeLine2 || 'CHỦ NHẬT',
+          timeLine3: data.timeLine3 || '21.06.2026',
+          locationLine1: data.locationLine1 || '',
+          locationLine2: data.locationLine2 || '',
+          footerMessage: data.footerMessage || 'Sự hiện diện của bạn là niềm vinh hạnh',
+          templateId: data.templateId || 'template1'
+        })
+        if (data.eventType) {
+          setEventType(data.eventType)
+        }
+      }
+    } catch (e) {
+      console.error(e)
+    }
+  }
 
   const handleEventTypeChange = (type: string) => {
     setEventType(type)
@@ -34,7 +82,12 @@ export default function BuilderPage() {
     e.preventDefault()
     setLoading(true)
     try {
-      const res = await api.post('/events', { ...formData, eventType })
+      const payload: any = { ...formData, eventType }
+      if (user) {
+        payload.userId = user._id
+      }
+      localStorage.setItem('last_event_builder_data', JSON.stringify(payload))
+      const res = await api.post('/events', payload)
       navigate(`/dashboard/${res.data._id}`)
     } catch (err) {
       console.error(err)
@@ -57,8 +110,22 @@ export default function BuilderPage() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-2xl mx-auto px-4 py-10 md:py-16">
+      <div className="relative z-10 max-w-2xl mx-auto px-4 py-8 md:py-12">
         
+        {/* Auth Header */}
+        <div className="flex justify-end mb-8 fade-in-up">
+          {user ? (
+            <Link to="/history" className="inline-flex items-center gap-2 px-4 py-2 bg-zinc-900/50 hover:bg-zinc-800 border border-zinc-800 rounded-xl text-sm font-medium text-zinc-300 transition-colors">
+              <span className="w-2 h-2 rounded-full bg-green-400" />
+              {user.username} &bull; Lịch sử thiệp
+            </Link>
+          ) : (
+            <Link to="/auth" className="inline-flex items-center gap-2 px-4 py-2 bg-purple-500/10 hover:bg-purple-500/20 border border-purple-500/20 rounded-xl text-sm font-medium text-purple-300 transition-colors">
+              Đăng nhập / Đăng ký
+            </Link>
+          )}
+        </div>
+
         {/* Header */}
         <div className="text-center mb-12 fade-in-up">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-xs font-medium text-purple-300 mb-6">
@@ -68,9 +135,18 @@ export default function BuilderPage() {
           <h1 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight">
             <span className="gradient-text">Tạo Thiệp Mời</span>
           </h1>
-          <p className="text-zinc-400 text-base max-w-md mx-auto leading-relaxed">
+          <p className="text-zinc-400 text-base max-w-md mx-auto leading-relaxed mb-6">
             Thiết kế thiệp mời cao cấp cho sự kiện của bạn. Chỉ mất 1 phút để tạo và chia sẻ.
           </p>
+          {hasSavedData && (
+            <button
+              type="button"
+              onClick={handleRestore}
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-purple-500/30 bg-purple-500/10 hover:bg-purple-500/20 text-purple-300 hover:text-white text-sm font-semibold transition-all duration-300 shadow-[0_0_15px_rgba(168,85,247,0.15)] hover:shadow-[0_0_25px_rgba(168,85,247,0.3)] hover:-translate-y-0.5"
+            >
+              🔄 Điền lại thông tin đã nhập gần nhất
+            </button>
+          )}
         </div>
 
         {/* Event Type Selector */}

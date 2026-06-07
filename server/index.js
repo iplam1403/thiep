@@ -5,6 +5,7 @@ const cors = require('cors');
 
 const Event = require('./models/Event');
 const Guest = require('./models/Guest');
+const User = require('./models/User');
 
 const app = express();
 app.use(cors());
@@ -13,6 +14,43 @@ app.use(express.json());
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB Connected"))
   .catch(err => console.error(err));
+
+// Auth - Register
+app.post('/api/auth/register', async (req, res) => {
+  try {
+    const { username, password } = req.body;
+    if (!username || !password) return res.status(400).json({ error: 'Username and password required' });
+    const existing = await User.findOne({ username });
+    if (existing) return res.status(400).json({ error: 'Username already exists' });
+    const user = new User({ username, password });
+    const saved = await user.save();
+    res.json({ _id: saved._id, username: saved.username });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// Auth - Login
+app.post('/api/auth/login', async (req, res) => {
+  try {
+    const { username, password } = req.body;
+    const user = await User.findOne({ username, password });
+    if (!user) return res.status(401).json({ error: 'Invalid credentials' });
+    res.json({ _id: user._id, username: user.username });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// Get User Events
+app.get('/api/users/:userId/events', async (req, res) => {
+  try {
+    const events = await Event.find({ userId: req.params.userId }).sort({ createdAt: -1 });
+    res.json(events);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
 
 // Create Event
 app.post('/api/events', async (req, res) => {

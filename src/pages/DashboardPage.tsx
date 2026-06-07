@@ -16,6 +16,7 @@ export default function DashboardPage() {
   const [guestName, setGuestName] = useState('')
   const [copiedId, setCopiedId] = useState<string | null>(null)
   const [adding, setAdding] = useState(false)
+  const [editingGuestId, setEditingGuestId] = useState<string | null>(null)
   
   // Editing state and form data
   const [isEditing, setIsEditing] = useState(false)
@@ -43,8 +44,16 @@ export default function DashboardPage() {
     if (!guestName.trim() || !eventId) return
     setAdding(true)
     try {
-      const res = await api.post('/guests', { eventId, name: guestName })
-      setGuests([res.data, ...guests])
+      if (editingGuestId) {
+        // Update guest
+        const res = await api.put(`/guests/${editingGuestId}`, { name: guestName })
+        setGuests(guests.map(g => g._id === editingGuestId ? { ...g, name: res.data.name } : g))
+        setEditingGuestId(null)
+      } else {
+        // Add guest
+        const res = await api.post('/guests', { eventId, name: guestName })
+        setGuests([res.data, ...guests])
+      }
       setGuestName('')
     } catch (err) {
       alert("Không thể kết nối đến máy chủ!")
@@ -66,6 +75,7 @@ export default function DashboardPage() {
       setUpdating(false)
     }
   }
+
 
   const handleCopy = async (link: string, guestId: string) => {
     try {
@@ -109,12 +119,21 @@ export default function DashboardPage() {
         
         {/* Navigation Breadcrumb */}
         <div className="mb-8 flex items-center justify-between">
-          <Link to="/" className="inline-flex items-center gap-2 text-zinc-500 hover:text-zinc-300 text-sm transition-colors group">
-            <svg className="w-4 h-4 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-            Tạo thiệp mới
-          </Link>
+          {localStorage.getItem('auth_user') ? (
+            <Link to="/history" className="inline-flex items-center gap-2 text-zinc-500 hover:text-zinc-300 text-sm transition-colors group">
+              <svg className="w-4 h-4 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+              Quay lại lịch sử
+            </Link>
+          ) : (
+            <Link to="/" className="inline-flex items-center gap-2 text-zinc-500 hover:text-zinc-300 text-sm transition-colors group">
+              <svg className="w-4 h-4 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+              Tạo thiệp mới
+            </Link>
+          )}
           
           <button 
             onClick={() => setIsEditing(true)} 
@@ -147,7 +166,7 @@ export default function DashboardPage() {
             <div className="glass-strong rounded-3xl p-6 md:p-8">
               <h3 className="text-sm font-semibold text-zinc-300 tracking-wide uppercase mb-4 flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-                Thêm khách mời
+                {editingGuestId ? 'Sửa tên khách mời (Làm lại)' : 'Thêm khách mời'}
               </h3>
               <form onSubmit={handleAddGuest} className="flex gap-3">
                 <input 
@@ -165,10 +184,22 @@ export default function DashboardPage() {
                   {adding ? (
                     <svg className="animate-spin w-5 h-5" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" /><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" /></svg>
                   ) : (
-                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" /></svg>
+                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
                   )}
-                  <span>Tạo Link</span>
+                  <span>{editingGuestId ? 'Lưu' : 'Tạo Link'}</span>
                 </button>
+                {editingGuestId && (
+                  <button 
+                    type="button"
+                    onClick={() => {
+                      setGuestName('');
+                      setEditingGuestId(null);
+                    }}
+                    className="px-4 py-3 bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 text-zinc-300 text-sm font-semibold rounded-xl transition-all"
+                  >
+                    Hủy
+                  </button>
+                )}
               </form>
             </div>
 
@@ -217,6 +248,19 @@ export default function DashboardPage() {
                             }`}
                           >
                             {isCopied ? '✓ Copied' : 'Copy'}
+                          </button>
+                          <button 
+                            onClick={() => {
+                              setGuestName(g.name);
+                              setEditingGuestId(g._id);
+                            }}
+                            className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-all duration-200 shrink-0 ${
+                              editingGuestId === g._id 
+                                ? 'bg-amber-500/20 text-amber-400 border-amber-500/30' 
+                                : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700 hover:text-zinc-200 border-zinc-700'
+                            }`}
+                          >
+                            Sửa
                           </button>
                           <Link 
                             to={`/invite/${g._id}`} 

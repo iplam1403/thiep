@@ -363,7 +363,7 @@ export default function Template1({ event, guestName }: Props) {
                 initial={{ opacity: 0 }} 
                 animate={{ opacity: 1 }} 
                 transition={{ delay: 0.5, duration: 0.8 }}
-                className="relative z-10 w-full max-w-2xl mx-auto flex flex-col items-center justify-center text-center pr-[68px] md:pr-0 pl-2 md:pl-0 py-8 md:py-4"
+                className="relative z-10 w-full max-w-2xl mx-auto flex flex-col items-center justify-center text-center pr-[55px] md:pr-0 pl-4 md:pl-0 py-8 md:py-4 overflow-hidden"
               >
                 {/* University header centered */}
                 <motion.div 
@@ -382,23 +382,23 @@ export default function Template1({ event, guestName }: Props) {
                   ) : (
                     <div className="w-12 h-14 bg-gradient-to-b from-[#1e3a8a] to-[#172554] rounded-b-xl flex items-center justify-center text-white text-[8px] font-bold shadow-md mb-3">LOGO</div>
                   )}
-                  <h3 className="text-[11px] md:text-sm font-bold text-[#1e3a8a] leading-tight uppercase tracking-wider px-1">{event.universityName}</h3>
-                  <p className="text-[8px] md:text-[10px] text-gray-400 uppercase mt-0.5 tracking-[0.15em]">{event.universitySubName}</p>
+                  <h3 className="text-[11px] md:text-sm font-bold text-[#1e3a8a] leading-tight uppercase tracking-wider px-1 break-words max-w-full">{event.universityName}</h3>
+                  <p className="text-[8px] md:text-[10px] text-gray-400 uppercase mt-0.5 tracking-[0.15em] break-words max-w-full">{event.universitySubName}</p>
                 </motion.div>
 
                 {/* Centered Dear ___ line */}
                 <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8 }}
-                  className="flex flex-col items-center mb-6 md:mb-8 w-full max-w-md">
+                  className="flex flex-col items-center mb-6 md:mb-8 w-full max-w-[200px] md:max-w-md">
                   <span className="text-sm md:text-base italic text-gray-400 mb-0.5 font-light" style={{ fontFamily: "'Be Vietnam Pro', sans-serif" }}>Dear</span>
-                  <span className="font-semibold text-lg md:text-2xl text-[#7A1515] border-b border-dashed border-[#C49B5B]/50 px-6 pb-1 text-center min-w-[180px] md:min-w-[220px]">
+                  <span className="font-semibold text-lg md:text-2xl text-[#7A1515] border-b border-dashed border-[#C49B5B]/50 px-2 md:px-6 pb-1 text-center min-w-[120px] md:min-w-[220px] break-words max-w-full">
                     {guestName}
                   </span>
                 </motion.div>
 
                 {/* Invitation text */}
                 <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.0 }}
-                  className="mb-3">
-                  <p className="text-xs md:text-base text-gray-500 italic tracking-wide">
+                  className="mb-3 px-2">
+                  <p className="text-[11px] md:text-base text-gray-500 italic tracking-wide">
                     {isGrad ? 'Thân mời bạn đến dự lễ tốt nghiệp của' : 'Trân trọng kính mời bạn đến dự tiệc sinh nhật của'}
                   </p>
                 </motion.div>
@@ -408,18 +408,18 @@ export default function Template1({ event, guestName }: Props) {
                   initial={{ opacity: 0, scale: 0.8 }} 
                   animate={{ opacity: 1, scale: 1 }} 
                   transition={{ delay: 1.2, type: "spring", stiffness: 100, damping: 12 }}
-                  className="mb-1"
+                  className="mb-1 w-full px-2"
                 >
-                  <h1 className="text-[2.8rem] md:text-[4.5rem] leading-[1.1] -rotate-1 font-normal font-serif gold-foil-text" style={{ fontFamily: "'Great Vibes', cursive" }}>
+                  <h1 className="text-[2.2rem] sm:text-[2.8rem] md:text-[4.5rem] leading-[1.2] -rotate-1 font-normal font-serif gold-foil-text break-words whitespace-normal max-w-full mx-auto" style={{ fontFamily: "'Great Vibes', cursive" }}>
                     {event.hostName}
                   </h1>
                 </motion.div>
 
                 {/* GRADUATION / Event title with pulsation glow */}
                 <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.4 }}
-                  className="mb-2"
+                  className="mb-2 w-full px-2"
                 >
-                  <h2 className="text-[1.8rem] md:text-[3.2rem] font-extrabold text-[#5C0A0A] tracking-[0.1em] uppercase leading-tight title-glow-royal" 
+                  <h2 className="text-2xl sm:text-[1.8rem] md:text-[3.2rem] font-extrabold text-[#5C0A0A] tracking-[0.1em] uppercase leading-tight title-glow-royal break-words whitespace-normal max-w-full mx-auto" 
                     style={{ fontFamily: "'Playfair Display', sans-serif" }}>
                     {event.title}
                   </h2>
@@ -427,7 +427,7 @@ export default function Template1({ event, guestName }: Props) {
 
                 {/* Subtitle */}
                 <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.6 }}
-                  className="mb-8 md:mb-10">
+                  className="mb-8 md:mb-10 px-2">
                   <p className="text-[10px] md:text-xs text-gray-400 tracking-[0.2em] uppercase">{event.subtitle}</p>
                 </motion.div>
 
