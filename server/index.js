@@ -35,12 +35,32 @@ app.get('/api/events/:id', async (req, res) => {
   }
 });
 
+// Update Event
+app.put('/api/events/:id', async (req, res) => {
+  try {
+    const updatedEvent = await Event.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    res.json(updatedEvent);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 // Add Guest
 app.post('/api/guests', async (req, res) => {
   try {
     const newGuest = new Guest(req.body);
     const savedGuest = await newGuest.save();
     res.json(savedGuest);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// Update Guest
+app.put('/api/guests/:id', async (req, res) => {
+  try {
+    const updatedGuest = await Guest.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    res.json(updatedGuest);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

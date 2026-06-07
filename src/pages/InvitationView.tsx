@@ -4,6 +4,8 @@ import api from '../api'
 import type { IGuest } from '../types'
 import Template1 from '../templates/Template1'
 import Template2 from '../templates/Template2'
+import Template3 from '../templates/Template3'
+import Template4 from '../templates/Template4'
 
 export default function InvitationView() {
   const { guestId } = useParams()
@@ -48,11 +50,10 @@ export default function InvitationView() {
 
   return (
     <div className="w-full min-h-[100dvh]">
-      {event.templateId === 'template1' ? (
-        <Template1 event={event} guestName={guest.name} />
-      ) : (
-        <Template2 event={event} guestName={guest.name} />
-      )}
+      {event.templateId === 'template1' && <Template1 event={event} guestName={guest.name} />}
+      {event.templateId === 'template2' && <Template2 event={event} guestName={guest.name} />}
+      {event.templateId === 'template3' && <Template3 event={event} guestName={guest.name} />}
+      {event.templateId === 'template4' && <Template4 event={event} guestName={guest.name} />}
     </div>
   )
 }

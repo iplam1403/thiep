@@ -240,6 +240,62 @@ export default function BuilderPage() {
                   )}
                 </div>
               </button>
+
+              <button
+                type="button"
+                onClick={() => set('templateId', 'template3')}
+                className={`relative p-6 rounded-2xl border text-left transition-all duration-300 overflow-hidden ${
+                  formData.templateId === 'template3' 
+                    ? 'border-[#C49B5B]/50 shadow-[0_0_40px_rgba(196,155,91,0.15)]' 
+                    : 'border-zinc-800 hover:border-zinc-700'
+                }`}
+              >
+                <div className={`absolute inset-0 transition-opacity duration-300 ${formData.templateId === 'template3' ? 'opacity-100' : 'opacity-0'}`}
+                  style={{ background: 'linear-gradient(135deg, rgba(196,155,91,0.15), rgba(43,37,33,0.1))' }} />
+                <div className="relative z-10">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#C49B5B] to-[#2B2521] flex items-center justify-center text-amber-100 text-lg shadow-lg">❧</div>
+                    <div>
+                      <div className="font-bold text-white">Retro Vintage</div>
+                      <div className="text-xs text-zinc-500">Template 3</div>
+                    </div>
+                  </div>
+                  <p className="text-xs text-zinc-400 leading-relaxed">Phong cách cổ điển, hoài niệm với giấy da cũ, họa tiết góc hoa văn, trang nhã.</p>
+                  {formData.templateId === 'template3' && (
+                    <div className="absolute top-4 right-4 w-6 h-6 rounded-full bg-[#C49B5B] flex items-center justify-center">
+                      <svg className="w-3.5 h-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" /></svg>
+                    </div>
+                  )}
+                </div>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => set('templateId', 'template4')}
+                className={`relative p-6 rounded-2xl border text-left transition-all duration-300 overflow-hidden ${
+                  formData.templateId === 'template4' 
+                    ? 'border-[#ff007f]/50 shadow-[0_0_40px_rgba(255,0,127,0.15)]' 
+                    : 'border-zinc-800 hover:border-zinc-700'
+                }`}
+              >
+                <div className={`absolute inset-0 transition-opacity duration-300 ${formData.templateId === 'template4' ? 'opacity-100' : 'opacity-0'}`}
+                  style={{ background: 'linear-gradient(135deg, rgba(255,0,127,0.15), rgba(0,240,255,0.08))' }} />
+                <div className="relative z-10">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#ff007f] to-[#00f0ff] flex items-center justify-center text-white text-lg shadow-lg">⚡</div>
+                    <div>
+                      <div className="font-bold text-white">Neon Cyber</div>
+                      <div className="text-xs text-zinc-500">Template 4</div>
+                    </div>
+                  </div>
+                  <p className="text-xs text-zinc-400 leading-relaxed">Hiện đại viễn tưởng, cá tính mạnh mẽ với ánh đèn neon dạ quang phản chiếu.</p>
+                  {formData.templateId === 'template4' && (
+                    <div className="absolute top-4 right-4 w-6 h-6 rounded-full bg-[#ff007f] flex items-center justify-center">
+                      <svg className="w-3.5 h-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" /></svg>
+                    </div>
+                  )}
+                </div>
+              </button>
             </div>
           </div>
 
