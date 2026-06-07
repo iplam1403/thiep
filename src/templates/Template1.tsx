@@ -14,30 +14,25 @@ const removeAccents = (str: string) => {
     .replace(/Đ/g, 'D');
 }
 
-/* Lush Watercolor Floral Background */
-const FloralBg = () => (
-  <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-3xl mix-blend-multiply">
-    <div 
-      className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-[0.85]"
-      style={{ backgroundImage: 'url(/assets/floral-bg.png)' }}
-    />
-    {/* Premium Paper Texture overlay */}
+/* Premium Ivory Silk Background */
+const IvorySilkBg = () => (
+  <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-3xl bg-[#F4F1EB]">
+    {/* Silk Texture overlay */}
     <div className="absolute inset-0 opacity-[0.4] mix-blend-color-burn"
       style={{
-        backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+        backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
         backgroundRepeat: 'repeat'
       }}
     />
     
-    {/* Subtle central fade to ensure text is readable */}
-    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(253,251,247,0.7)_20%,transparent_100%)]" />
+    {/* Very subtle vignette */}
+    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.4)_10%,rgba(210,195,175,0.5)_100%)] mix-blend-multiply" />
 
-    {/* Falling leaves overlay (kept for animation) */}
+    {/* Falling gold leaves overlay for magic */}
     <div className="absolute inset-0 z-0">
-      <div className="absolute top-[10%] left-[20%] w-3 h-3 bg-[#8B1A1A] rounded-bl-full rounded-tr-full falling-leaf opacity-60" style={{ animationDelay: '0s' }} />
-      <div className="absolute top-[30%] left-[70%] w-4 h-2 bg-[#C49B5B] rounded-full falling-leaf opacity-60" style={{ animationDelay: '2s' }} />
-      <div className="absolute top-[60%] left-[40%] w-3 h-4 bg-[#A22222] rounded-tl-full rounded-br-full falling-leaf opacity-60" style={{ animationDelay: '4s' }} />
-      <div className="absolute top-[80%] left-[80%] w-2 h-3 bg-[#E6C575] rounded-bl-full rounded-tr-full falling-leaf opacity-60" style={{ animationDelay: '1s' }} />
+      <div className="absolute top-[10%] left-[20%] w-2 h-2 bg-[#C49B5B] rounded-bl-full rounded-tr-full falling-leaf opacity-40 shadow-[0_0_5px_#C49B5B]" style={{ animationDelay: '0s' }} />
+      <div className="absolute top-[30%] left-[70%] w-2.5 h-1.5 bg-[#E6C575] rounded-full falling-leaf opacity-50 shadow-[0_0_5px_#E6C575]" style={{ animationDelay: '2s' }} />
+      <div className="absolute top-[60%] left-[40%] w-2 h-2.5 bg-[#A87C33] rounded-tl-full rounded-br-full falling-leaf opacity-40 shadow-[0_0_5px_#A87C33]" style={{ animationDelay: '4s' }} />
     </div>
   </div>
 )
@@ -210,8 +205,8 @@ export default function Template1({ event, guestName }: Props) {
                 )}
               </motion.button>
 
-              {/* Floral background */}
-              <FloralBg />
+              {/* Ivory Silk background */}
+              <IvorySilkBg />
 
               {/* Magical Gold Sparkles floating in background */}
               <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-30">
@@ -264,102 +259,106 @@ export default function Template1({ event, guestName }: Props) {
                   transition={{ delay: 0.5, duration: 1 }}
                   className="relative w-full bg-[#FDFBF7]/95 backdrop-blur-xl shadow-[0_30px_60px_rgba(90,40,40,0.2)] rounded-sm border border-[#C49B5B]/30 flex flex-col items-center text-center px-6 py-12 md:px-16 md:py-16"
                 >
-                  {/* Intricate Gold SVG Border Frame */}
-                  <div className="absolute inset-3 border-[1.5px] border-[#C49B5B]/40 pointer-events-none" />
-                  <div className="absolute inset-4 border border-[#C49B5B]/15 pointer-events-none" />
+                  {/* Intricate Gold SVG Border Frame - Thinner and more elegant */}
+                  <div className="absolute inset-4 border-[0.5px] border-[#C49B5B]/60 pointer-events-none" />
+                  <div className="absolute inset-5 border-[0.5px] border-[#C49B5B]/30 pointer-events-none" />
                   
-                  {/* Dynamic Year Watermark */}
-                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden z-0 opacity-[0.04]">
-                    <span className="text-[35vw] md:text-[280px] font-bold text-[#C49B5B] tracking-[-0.05em] leading-none select-none" style={{ fontFamily: "'Playfair Display', serif" }}>
+                  {/* Dynamic Year Watermark - Very faint */}
+                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden z-0 opacity-[0.015]">
+                    <span className="text-[40vw] md:text-[320px] font-bold text-[#C49B5B] tracking-[-0.05em] leading-none select-none" style={{ fontFamily: "'Playfair Display', serif" }}>
                       {dynamicYear}
                     </span>
                   </div>
 
-                  {/* Centered Wax Seal with Velvet Ribbon Tails */}
-                  <div className="absolute -top-7 md:-top-9 left-1/2 -translate-x-1/2 flex flex-col items-center z-50">
-                    {/* Ribbon Tails */}
-                    <div className="relative flex justify-center w-full h-0 z-0">
-                      <div className="absolute top-8 md:top-10 left-1/2 w-6 md:w-8 h-10 md:h-14 bg-gradient-to-br from-[#8B1A1A] via-[#A22222] to-[#4C0B0B] transform rotate-[25deg] -translate-x-full shadow-[2px_2px_5px_rgba(0,0,0,0.5)] border-l border-[#F3E5AB]/40 origin-top" style={{ clipPath: 'polygon(0 0, 100% 0, 100% 100%, 50% 80%, 0 100%)' }} />
-                      <div className="absolute top-8 md:top-10 right-1/2 w-6 md:w-8 h-12 md:h-16 bg-gradient-to-bl from-[#A22222] via-[#8B1A1A] to-[#4C0B0B] transform -rotate-[15deg] translate-x-full shadow-[-2px_2px_5px_rgba(0,0,0,0.5)] border-r border-[#F3E5AB]/40 origin-top" style={{ clipPath: 'polygon(0 0, 100% 0, 100% 100%, 50% 80%, 0 100%)', zIndex: -1 }} />
-                    </div>
-                    {/* Wax Seal */}
-                    <div className="w-14 h-14 md:w-18 md:h-18 wax-seal-anim drop-shadow-[0_8px_10px_rgba(0,0,0,0.6)] relative z-10">
-                      <div className="w-full h-full rounded-full bg-gradient-to-br from-[#d93838] via-[#8B1A1A] to-[#4a0808] p-[1.5px] shadow-[inset_0_3px_5px_rgba(255,255,255,0.4),inset_0_-3px_5px_rgba(0,0,0,0.6)] flex items-center justify-center">
-                        <div className="w-full h-full rounded-full bg-gradient-to-tr from-[#630b0b] to-[#b32424] flex items-center justify-center border-[2px] border-[#4a0808]/80 shadow-[inset_0_2px_4px_rgba(0,0,0,0.5)]">
-                          <span className="text-[#F3E5AB] text-[16px] md:text-[22px] font-serif drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)] opacity-90" style={{ fontFamily: "'Great Vibes', cursive" }}>{event.hostName.charAt(0)}</span>
+                  {/* Hyper-Realistic Wax Seal (No Ribbons) */}
+                  <div className="absolute -top-8 left-1/2 -translate-x-1/2 flex flex-col items-center z-50">
+                    <div className="w-16 h-16 md:w-20 md:h-20 wax-seal-anim relative z-10 filter drop-shadow-[0_15px_15px_rgba(0,0,0,0.15)]">
+                      {/* SVG definition for realistic wax texture */}
+                      <svg width="0" height="0" className="absolute">
+                        <filter id="waxTexture">
+                          <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="4" result="noise" />
+                          <feDisplacementMap in="SourceGraphic" in2="noise" scale="3" xChannelSelector="R" yChannelSelector="G" />
+                        </filter>
+                      </svg>
+                      
+                      <div className="w-full h-full rounded-full bg-[#8B1A1A] p-[2px] flex items-center justify-center shadow-[inset_0_4px_8px_rgba(255,255,255,0.4),inset_0_-4px_8px_rgba(0,0,0,0.6),0_2px_4px_rgba(0,0,0,0.5)]" style={{ filter: 'url(#waxTexture)' }}>
+                        <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#d93838]/60 via-transparent to-[#4a0808]/80 mix-blend-overlay pointer-events-none" />
+                        <div className="w-full h-full rounded-full bg-[#7A1515] flex items-center justify-center border-[1.5px] border-[#4a0808]/50 shadow-[inset_0_3px_5px_rgba(0,0,0,0.4)]">
+                          <span className="text-[#F3E5AB] text-[20px] md:text-[26px] font-serif drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)] opacity-95 relative z-10" style={{ fontFamily: "'Great Vibes', cursive" }}>{event.hostName.charAt(0)}</span>
+                          {/* Inner wax highlight */}
+                          <div className="absolute inset-1 rounded-full bg-gradient-to-tr from-transparent via-white/10 to-transparent pointer-events-none" />
                         </div>
                       </div>
-                      <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-transparent via-white/20 to-transparent pointer-events-none" />
                     </div>
                   </div>
 
-                  {/* Corner Ornaments */}
-                  <svg className="absolute top-2 left-2 w-8 h-8 text-[#C49B5B]" viewBox="0 0 100 100" fill="currentColor">
-                    <path d="M0 0 L30 0 C30 15 15 30 0 30 Z" />
+                  {/* Corner Ornaments - Minimalist */}
+                  <svg className="absolute top-4 left-4 w-6 h-6 text-[#C49B5B]/80" viewBox="0 0 100 100" fill="currentColor">
+                    <path d="M0 0 L20 0 C20 10 10 20 0 20 Z" />
                   </svg>
-                  <svg className="absolute top-2 right-2 w-8 h-8 text-[#C49B5B] transform rotate-90" viewBox="0 0 100 100" fill="currentColor">
-                    <path d="M0 0 L30 0 C30 15 15 30 0 30 Z" />
+                  <svg className="absolute top-4 right-4 w-6 h-6 text-[#C49B5B]/80 transform rotate-90" viewBox="0 0 100 100" fill="currentColor">
+                    <path d="M0 0 L20 0 C20 10 10 20 0 20 Z" />
                   </svg>
-                  <svg className="absolute bottom-2 right-2 w-8 h-8 text-[#C49B5B] transform rotate-180" viewBox="0 0 100 100" fill="currentColor">
-                    <path d="M0 0 L30 0 C30 15 15 30 0 30 Z" />
+                  <svg className="absolute bottom-4 right-4 w-6 h-6 text-[#C49B5B]/80 transform rotate-180" viewBox="0 0 100 100" fill="currentColor">
+                    <path d="M0 0 L20 0 C20 10 10 20 0 20 Z" />
                   </svg>
-                  <svg className="absolute bottom-2 left-2 w-8 h-8 text-[#C49B5B] transform -rotate-90" viewBox="0 0 100 100" fill="currentColor">
-                    <path d="M0 0 L30 0 C30 15 15 30 0 30 Z" />
+                  <svg className="absolute bottom-4 left-4 w-6 h-6 text-[#C49B5B]/80 transform -rotate-90" viewBox="0 0 100 100" fill="currentColor">
+                    <path d="M0 0 L20 0 C20 10 10 20 0 20 Z" />
                   </svg>
 
-                  {/* Elegant Content */}
+                  {/* Elegant Content - More negative space, smaller font, wider tracking */}
                   {event.universityLogo ? (
-                    <img src={event.universityLogo} className="w-14 h-14 md:w-20 md:h-20 object-contain mb-4 drop-shadow-md z-10" alt="" />
+                    <img src={event.universityLogo} className="w-12 h-12 md:w-16 md:h-16 object-contain mb-6 opacity-90 z-10" alt="" />
                   ) : (
-                    <div className="w-12 h-14 bg-gradient-to-b from-[#1e3a8a] to-[#172554] rounded-b-xl flex items-center justify-center text-white text-[8px] font-bold shadow-md mb-4 z-10">LOGO</div>
+                    <div className="w-10 h-12 bg-gradient-to-b from-[#1e3a8a] to-[#172554] rounded-b-lg flex items-center justify-center text-white text-[6px] font-medium shadow-sm mb-6 z-10">LOGO</div>
                   )}
 
-                  <h3 className="text-[11px] md:text-[13px] font-bold text-[#1e3a8a] leading-tight uppercase tracking-[0.25em] mb-1">{event.universityName}</h3>
-                  <p className="text-[8px] md:text-[10px] text-gray-500 uppercase tracking-[0.3em] mb-10">{event.universitySubName}</p>
+                  <h3 className="text-[10px] md:text-[11px] font-medium text-[#3a2e2b] leading-relaxed uppercase tracking-[0.3em] mb-2">{event.universityName}</h3>
+                  <p className="text-[7px] md:text-[8px] text-[#C49B5B] uppercase tracking-[0.4em] mb-12">{event.universitySubName}</p>
 
-                  <p className="text-xs md:text-sm italic text-gray-400 mb-1" style={{ fontFamily: "'Be Vietnam Pro', sans-serif" }}>Dear</p>
-                  <p className="font-bold text-lg md:text-2xl text-[#7A1515] tracking-[0.1em] uppercase mb-8 border-b border-[#C49B5B]/40 pb-2 px-8 min-w-[200px]">{guestName}</p>
+                  <p className="text-[10px] md:text-[11px] italic text-[#8B1A1A] mb-3" style={{ fontFamily: "'Playfair Display', serif" }}>Dear</p>
+                  <p className="font-semibold text-lg md:text-xl text-[#3a2e2b] tracking-[0.15em] uppercase mb-10 border-b-[0.5px] border-[#C49B5B]/40 pb-3 px-12 min-w-[240px]">{guestName}</p>
 
-                  <p className="text-xs md:text-sm text-gray-500 italic tracking-[0.1em] mb-4">
+                  <p className="text-[9px] md:text-[10px] text-gray-500 italic tracking-[0.2em] mb-6">
                     {isGrad ? 'Thân mời bạn đến dự lễ tốt nghiệp của' : 'Trân trọng kính mời bạn đến dự tiệc sinh nhật của'}
                   </p>
 
-                  <h1 className="text-[3rem] md:text-[4.5rem] leading-[1.2] font-normal font-serif gold-foil-text mb-4" style={{ fontFamily: "'Great Vibes', cursive" }}>
+                  <h1 className="text-[2.5rem] md:text-[4rem] leading-[1.2] font-normal font-serif gold-foil-text mb-6" style={{ fontFamily: "'Great Vibes', cursive" }}>
                     {event.hostName}
                   </h1>
 
-                  <h2 className="text-2xl md:text-[2.5rem] font-extrabold text-[#5C0A0A] tracking-[0.25em] uppercase leading-tight mb-2" style={{ fontFamily: "'Playfair Display', sans-serif" }}>
+                  <h2 className="text-xl md:text-[2rem] font-medium text-[#3a2e2b] tracking-[0.3em] uppercase leading-tight mb-3" style={{ fontFamily: "'Playfair Display', serif" }}>
                     {event.title}
                   </h2>
-                  <p className="text-[10px] md:text-xs text-[#C49B5B] tracking-[0.3em] uppercase font-bold mb-10">{event.subtitle}</p>
+                  <p className="text-[8px] md:text-[9px] text-[#C49B5B] tracking-[0.4em] uppercase font-semibold mb-12">{event.subtitle}</p>
 
-                  {/* Divider */}
-                  <div className="w-full flex justify-center items-center mb-8">
-                    <div className="h-[1px] w-12 md:w-20 bg-[#C49B5B]/40" />
-                    <span className="mx-4 text-[#C49B5B] text-xl">⚜</span>
-                    <div className="h-[1px] w-12 md:w-20 bg-[#C49B5B]/40" />
+                  {/* Minimalist Divider */}
+                  <div className="w-full flex justify-center items-center mb-10">
+                    <div className="h-[0.5px] w-16 md:w-24 bg-[#C49B5B]/60" />
+                    <div className="w-1.5 h-1.5 rotate-45 border-[0.5px] border-[#C49B5B] mx-4" />
+                    <div className="h-[0.5px] w-16 md:w-24 bg-[#C49B5B]/60" />
                   </div>
 
-                  {/* Time & Location perfectly aligned */}
-                  <div className="flex flex-col md:flex-row w-full justify-between items-center gap-8 md:gap-4 px-2 md:px-10 mb-10">
+                  {/* Time & Location perfectly aligned - Ultra Minimalist */}
+                  <div className="flex flex-col md:flex-row w-full justify-between items-center gap-10 md:gap-4 px-4 md:px-12 mb-12">
                     <div className="flex flex-col items-center md:w-1/2">
-                      <p className="text-[9px] md:text-[10px] text-gray-400 uppercase tracking-[0.3em] mb-2 font-medium">Vào lúc</p>
-                      <p className="text-sm md:text-base font-bold text-[#3a2e2b] tracking-[0.1em] uppercase">{event.timeLine1}</p>
-                      <p className="text-xs md:text-sm font-semibold text-[#5C0A0A] uppercase tracking-[0.2em] my-1">{event.timeLine2}</p>
-                      <p className="text-[10px] md:text-[11px] text-gray-500 font-medium tracking-[0.1em] uppercase">{event.timeLine3}</p>
+                      <p className="text-[8px] md:text-[9px] text-[#C49B5B] uppercase tracking-[0.4em] mb-3 font-semibold">Vào lúc</p>
+                      <p className="text-xs md:text-sm font-medium text-[#3a2e2b] tracking-[0.2em] uppercase">{event.timeLine1}</p>
+                      <p className="text-[10px] md:text-[11px] font-semibold text-[#8B1A1A] uppercase tracking-[0.3em] my-1.5">{event.timeLine2}</p>
+                      <p className="text-[8px] md:text-[9px] text-gray-500 font-medium tracking-[0.2em] uppercase">{event.timeLine3}</p>
                     </div>
 
-                    <div className="hidden md:block w-[1px] h-20 bg-[#C49B5B]/30" />
-                    <div className="md:hidden h-[1px] w-20 bg-[#C49B5B]/30" />
+                    <div className="hidden md:block w-[0.5px] h-16 bg-[#C49B5B]/50" />
+                    <div className="md:hidden h-[0.5px] w-16 bg-[#C49B5B]/50" />
 
                     <div className="flex flex-col items-center md:w-1/2">
-                      <p className="text-[9px] md:text-[10px] text-gray-400 uppercase tracking-[0.3em] mb-2 font-medium">Tại</p>
-                      <p className="text-xs md:text-sm font-bold text-[#3a2e2b] uppercase tracking-[0.15em] text-center leading-relaxed">{event.locationLine1}</p>
-                      <p className="text-[9px] md:text-[10px] text-gray-500 mt-2 text-center tracking-[0.1em]">{event.locationLine2}</p>
+                      <p className="text-[8px] md:text-[9px] text-[#C49B5B] uppercase tracking-[0.4em] mb-3 font-semibold">Tại</p>
+                      <p className="text-[10px] md:text-[11px] font-medium text-[#3a2e2b] uppercase tracking-[0.2em] text-center leading-[2]">{event.locationLine1}</p>
+                      <p className="text-[7px] md:text-[8px] text-gray-500 mt-2 text-center tracking-[0.15em]">{event.locationLine2}</p>
                     </div>
                   </div>
 
-                  <p className="text-[11px] md:text-xs text-gray-400 italic leading-[1.8] px-4">
+                  <p className="text-[9px] md:text-[10px] text-gray-400 italic tracking-[0.1em] leading-[2] px-6">
                     "{event.footerMessage}"
                   </p>
 
