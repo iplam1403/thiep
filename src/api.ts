@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const baseURL = window.location.hostname === 'localhost' 
   ? 'http://localhost:5000/api' 
-  : `http://${window.location.hostname}:5000/api`;
+  : 'https://thiepmoi-two.vercel.app/api';
 
 const api = axios.create({
   baseURL
