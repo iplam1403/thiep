@@ -367,10 +367,6 @@ export default function Template1({ event, guestName }: Props) {
                       "{event.footerMessage}"
                     </p>
                   </div>
-                </motion.div>text-gray-400 italic tracking-[0.1em] leading-[2] px-6">
-                    "{event.footerMessage}"
-                  </p>
-
                 </motion.div>
               </div>
             </div>
