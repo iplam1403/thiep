@@ -257,7 +257,7 @@ export default function Template1({ event, guestName }: Props) {
                   y: { type: "spring", stiffness: 80, damping: 12, delay: 0.2 },
                   default: { duration: 0.3 }
                 }}
-                className="absolute top-0 right-3 md:right-16 w-[50px] md:w-[82px] h-[52%] md:h-[55%] z-20 origin-top cursor-pointer"
+                className="absolute top-0 right-[8%] md:right-[20%] w-[50px] md:w-[82px] h-[52%] md:h-[55%] z-40 origin-top cursor-pointer"
                 style={{ perspective: '800px' }}
               >
                 {/* Backing Gold Ribbon Layer (extends slightly on sides/bottom) */}
@@ -390,139 +390,93 @@ export default function Template1({ event, guestName }: Props) {
               </motion.div>
 
 
-              {/* ── CARD CONTENT ── */}
-              <motion.div 
-                initial={{ opacity: 0 }} 
-                animate={{ opacity: 1 }} 
-                transition={{ delay: 0.5, duration: 0.8 }}
-                className="relative z-10 w-full max-w-2xl mx-auto flex flex-col items-center justify-center text-center pr-[55px] md:pr-0 pl-4 md:pl-0 py-8 md:py-4 overflow-hidden"
-              >
+              {/* ── MULTI-LAYERED CARD CONTENT ── */}
+              <div className="relative z-10 w-full max-w-4xl h-[750px] md:h-[650px] mx-auto mt-8 md:mt-0 perspective-[1200px] pointer-events-auto">
+                
                 {/* Floating Butterflies / Animations ON the card */}
-                <motion.div 
-                  animate={{ y: [0, -15, 0], x: [0, 10, 0], rotate: [0, 5, -5, 0] }} 
-                  transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-                  className="absolute top-[10%] left-[10%] opacity-40 text-2xl z-0 pointer-events-none"
-                >
-                  🦋
-                </motion.div>
-                <motion.div 
-                  animate={{ y: [0, 20, 0], x: [0, -15, 0], rotate: [0, -10, 10, 0] }} 
-                  transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-                  className="absolute bottom-[20%] right-[10%] opacity-30 text-3xl z-0 pointer-events-none"
-                >
-                  ✨
-                </motion.div>
-                {/* University header centered */}
-                <motion.div 
-                  initial={{ opacity: 0, scale: 0.9 }} 
-                  animate={{ opacity: 1, scale: 1 }} 
-                  transition={{ delay: 0.6, type: "spring", stiffness: 80 }}
-                  className="flex flex-col items-center mb-6 md:mb-8"
-                >
-                  {event.universityLogo ? (
-                    <motion.img 
-                      whileHover={{ scale: 1.1, rotate: 5 }}
-                      src={event.universityLogo} 
-                      className="w-14 h-14 md:w-18 md:h-18 object-contain mb-3 drop-shadow-md" 
-                      alt="" 
-                    />
-                  ) : (
-                    <div className="w-12 h-14 bg-gradient-to-b from-[#1e3a8a] to-[#172554] rounded-b-xl flex items-center justify-center text-white text-[8px] font-bold shadow-md mb-3">LOGO</div>
-                  )}
-                  <h3 className="text-[11px] md:text-sm font-bold text-[#1e3a8a] leading-tight uppercase tracking-wider px-1 break-words max-w-full">{event.universityName}</h3>
-                  <p className="text-[8px] md:text-[10px] text-gray-400 uppercase mt-0.5 tracking-[0.15em] break-words max-w-full">{event.universitySubName}</p>
-                </motion.div>
+                <motion.div animate={{ y: [0, -15, 0], x: [0, 10, 0], rotate: [0, 5, -5, 0] }} transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }} className="absolute top-[-5%] left-[5%] opacity-40 text-2xl z-40 pointer-events-none">🦋</motion.div>
+                <motion.div animate={{ y: [0, 20, 0], x: [0, -15, 0], rotate: [0, -10, 10, 0] }} transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut', delay: 1 }} className="absolute bottom-[0%] right-[30%] opacity-30 text-3xl z-40 pointer-events-none">✨</motion.div>
 
-                {/* Centered Dear ___ line */}
-                <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8 }}
-                  className="flex flex-col items-center mb-4 md:mb-6 w-full max-w-[200px] md:max-w-md">
-                  <span className="text-sm md:text-base italic text-gray-400 mb-0.5 font-light" style={{ fontFamily: "'Be Vietnam Pro', sans-serif" }}>Dear</span>
-                  <span className="font-semibold text-lg md:text-2xl text-[#7A1515] border-b border-dashed border-[#C49B5B]/50 px-2 md:px-6 pb-1 text-center min-w-[120px] md:min-w-[220px] break-words max-w-full">
-                    {guestName}
-                  </span>
-                </motion.div>
-
-                {/* Ornate Divider */}
-                <motion.div initial={{ opacity: 0, scale: 0 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.9 }} className="mb-4">
-                  <svg width="120" height="15" viewBox="0 0 120 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M0,7.5 L45,7.5 M75,7.5 L120,7.5" stroke="#C49B5B" strokeWidth="0.5" />
-                    <path d="M60,0 L65,7.5 L60,15 L55,7.5 Z" fill="#C49B5B" />
-                    <circle cx="50" cy="7.5" r="1.5" fill="#C49B5B" />
-                    <circle cx="70" cy="7.5" r="1.5" fill="#C49B5B" />
-                  </svg>
-                </motion.div>
-
-                {/* Invitation text */}
-                <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.0 }}
-                  className="mb-3 px-2">
-                  <p className="text-[11px] md:text-base text-gray-500 italic tracking-wide">
-                    {isGrad ? 'Thân mời bạn đến dự lễ tốt nghiệp của' : 'Trân trọng kính mời bạn đến dự tiệc sinh nhật của'}
-                  </p>
-                </motion.div>
-
-                {/* Host name script with Gold Foil moving shine */}
+                {/* LAYER 1: MAIN INVITATION CARD */}
                 <motion.div 
-                  initial={{ opacity: 0, scale: 0.8 }} 
-                  animate={{ opacity: 1, scale: 1 }} 
-                  transition={{ delay: 1.2, type: "spring", stiffness: 100, damping: 12 }}
-                  className="mb-1 w-full px-2"
+                  initial={{ opacity: 0, x: -50, rotateY: 15, rotateZ: 0 }} 
+                  animate={{ opacity: 1, x: 0, rotateY: 0, rotateZ: -2 }} 
+                  whileHover={{ rotateZ: -1, scale: 1.02, zIndex: 30 }}
+                  transition={{ delay: 0.5, duration: 0.8, type: "spring" }}
+                  className="absolute left-[5%] md:left-[8%] top-[2%] md:top-[5%] w-[85%] md:w-[55%] bg-[#FDFBF7] shadow-[-10px_20px_40px_rgba(90,40,40,0.15)] rounded-md p-8 md:p-10 border border-[#C49B5B]/30 z-10 flex flex-col items-center text-center origin-bottom-left"
                 >
-                  <h1 className="relative inline-block text-[2.2rem] sm:text-[2.8rem] md:text-[4.5rem] leading-[1.2] -rotate-1 font-normal font-serif gold-foil-text break-words whitespace-normal max-w-full mx-auto" style={{ fontFamily: "'Great Vibes', cursive" }}>
+                  <div className="absolute inset-1 border border-[#C49B5B]/15 rounded-sm pointer-events-none" />
+                  
+                  {/* University header centered */}
+                  <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.6, type: "spring", stiffness: 80 }} className="flex flex-col items-center mb-6">
+                    {event.universityLogo ? (
+                      <motion.img whileHover={{ scale: 1.1, rotate: 5 }} src={event.universityLogo} className="w-12 h-12 md:w-16 md:h-16 object-contain mb-3 drop-shadow-md" alt="" />
+                    ) : (
+                      <div className="w-10 h-12 bg-gradient-to-b from-[#1e3a8a] to-[#172554] rounded-b-xl flex items-center justify-center text-white text-[7px] font-bold shadow-md mb-3">LOGO</div>
+                    )}
+                    <h3 className="text-[10px] md:text-xs font-bold text-[#1e3a8a] leading-tight uppercase tracking-wider break-words max-w-full">{event.universityName}</h3>
+                    <p className="text-[7px] md:text-[8px] text-gray-400 uppercase mt-0.5 tracking-[0.15em]">{event.universitySubName}</p>
+                  </motion.div>
+
+                  {/* Centered Dear ___ line */}
+                  <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8 }} className="flex flex-col items-center mb-6 w-full">
+                    <span className="text-sm italic text-gray-400 mb-0.5 font-light" style={{ fontFamily: "'Be Vietnam Pro', sans-serif" }}>Dear</span>
+                    <span className="font-semibold text-lg md:text-xl text-[#7A1515] border-b border-dashed border-[#C49B5B]/50 px-2 pb-1 text-center min-w-[120px]">{guestName}</span>
+                  </motion.div>
+
+                  {/* Ornate Divider */}
+                  <div className="mb-4">
+                    <svg width="100" height="12" viewBox="0 0 120 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M0,7.5 L45,7.5 M75,7.5 L120,7.5" stroke="#C49B5B" strokeWidth="0.5" />
+                      <path d="M60,0 L65,7.5 L60,15 L55,7.5 Z" fill="#C49B5B" />
+                    </svg>
+                  </div>
+
+                  <p className="text-[10px] md:text-sm text-gray-500 italic tracking-wide mb-2">{isGrad ? 'Thân mời bạn đến dự lễ tốt nghiệp của' : 'Trân trọng kính mời bạn đến dự tiệc sinh nhật của'}</p>
+
+                  <h1 className="relative inline-block text-[2rem] md:text-[3.5rem] leading-[1.2] -rotate-1 font-normal font-serif gold-foil-text mb-2" style={{ fontFamily: "'Great Vibes', cursive" }}>
                     {event.hostName}
-                    <div className="absolute -top-4 -right-8 md:-right-12 w-8 h-8 md:w-12 md:h-12 text-[#FFF5C3] star-glint-active pointer-events-none z-40 mix-blend-screen">
-                      <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 0l3 9 9 3-9 3-3 9-3-9-9-3 9-3z" />
-                      </svg>
-                    </div>
                   </h1>
-                </motion.div>
 
-                {/* GRADUATION / Event title with pulsation glow */}
-                <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.4 }}
-                  className="mb-2 w-full px-2"
-                >
-                  <h2 className="text-2xl sm:text-[1.8rem] md:text-[3.2rem] font-extrabold text-[#5C0A0A] tracking-[0.1em] uppercase leading-tight title-glow-royal break-words whitespace-normal max-w-full mx-auto" 
-                    style={{ fontFamily: "'Playfair Display', sans-serif" }}>
+                  <h2 className="text-xl md:text-[2.2rem] font-extrabold text-[#5C0A0A] tracking-[0.1em] uppercase leading-tight title-glow-royal" style={{ fontFamily: "'Playfair Display', sans-serif" }}>
                     {event.title}
                   </h2>
                 </motion.div>
 
-                {/* Subtitle */}
-                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.6 }}
-                  className="mb-6 md:mb-8 px-2">
-                  <p className="text-[10px] md:text-xs text-gray-400 tracking-[0.2em] uppercase">{event.subtitle}</p>
-                </motion.div>
-
-                {/* Time & Location details — side-by-side on desktop, stacked on mobile */}
-                <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.8 }}
-                  className="relative grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-16 my-2 w-full max-w-2xl border-y-2 border-[#C49B5B]/15 py-8 md:py-10 px-2 bg-gradient-to-r from-transparent via-[#C49B5B]/[0.02] to-transparent"
+                {/* LAYER 2: DETAILS CARD */}
+                <motion.div 
+                  initial={{ opacity: 0, x: 50, rotateY: -15, rotateZ: 0 }} 
+                  animate={{ opacity: 1, x: 0, rotateY: 0, rotateZ: 3 }} 
+                  whileHover={{ rotateZ: 4, scale: 1.02, zIndex: 30 }}
+                  transition={{ delay: 0.9, duration: 0.8, type: "spring" }}
+                  className="absolute right-[5%] md:right-[10%] bottom-[5%] md:bottom-[10%] w-[85%] md:w-[48%] bg-[#FFF] shadow-[15px_25px_50px_rgba(0,0,0,0.15)] rounded-sm p-6 md:p-8 border-2 border-[#C49B5B]/50 z-20 flex flex-col items-center text-center origin-top-right backdrop-blur-sm bg-white/95"
                 >
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#FDFBF7] px-4 text-[#C49B5B] text-xl">⚜</div>
-                  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 bg-[#FDFBF7] px-4 text-[#C49B5B] text-xl">⚜</div>
-                  {/* Time Section */}
-                  <div className="flex flex-col items-center">
-                    <p className="text-[9px] md:text-[10px] text-gray-400 uppercase tracking-[0.25em] mb-1 md:mb-2 font-medium">Vào lúc</p>
-                    <p className="text-base md:text-lg font-bold text-[#3a2e2b]">{event.timeLine1}</p>
-                    <p className="text-xs md:text-sm font-semibold text-[#5C0A0A] uppercase tracking-wider">{event.timeLine2}</p>
-                    <p className="text-xs md:text-sm text-gray-500 font-medium">{event.timeLine3}</p>
+                  <p className="text-[9px] md:text-[11px] text-[#C49B5B] tracking-[0.2em] uppercase font-bold mb-4 border-b border-[#C49B5B]/20 pb-2 w-full">Event Details</p>
+                  
+                  <p className="text-[8px] md:text-[10px] text-gray-400 tracking-[0.2em] uppercase mb-4">{event.subtitle}</p>
+
+                  <div className="w-full flex flex-col gap-5 mb-4">
+                    <div className="flex flex-col items-center">
+                      <p className="text-[9px] text-gray-400 uppercase tracking-[0.25em] mb-1 font-medium">Vào lúc</p>
+                      <p className="text-sm md:text-base font-bold text-[#3a2e2b]">{event.timeLine1}</p>
+                      <p className="text-[10px] md:text-xs font-semibold text-[#5C0A0A] uppercase tracking-wider">{event.timeLine2}</p>
+                      <p className="text-[10px] md:text-xs text-gray-500 font-medium">{event.timeLine3}</p>
+                    </div>
+                    <div className="flex items-center justify-center w-full">
+                      <svg width="40" height="8" viewBox="0 0 120 15" fill="none"><path d="M0,7.5 L120,7.5" stroke="#C49B5B" strokeWidth="0.5" strokeDasharray="2 4" /></svg>
+                    </div>
+                    <div className="flex flex-col items-center">
+                      <p className="text-[9px] text-gray-400 uppercase tracking-[0.25em] mb-1 font-medium">Tại</p>
+                      <p className="text-[11px] md:text-sm font-bold text-[#3a2e2b] uppercase tracking-wide">{event.locationLine1}</p>
+                      <p className="text-[9px] md:text-[11px] text-gray-500 mt-1 max-w-[200px]">{event.locationLine2}</p>
+                    </div>
                   </div>
 
-                  {/* Location Section */}
-                  <div className="flex flex-col items-center">
-                    <p className="text-[9px] md:text-[10px] text-gray-400 uppercase tracking-[0.25em] mb-1 md:mb-2 font-medium">Tại</p>
-                    <p className="text-sm md:text-base font-bold text-[#3a2e2b] uppercase tracking-wide px-2">{event.locationLine1}</p>
-                    <p className="text-[11px] md:text-xs text-gray-500 mt-1 leading-relaxed max-w-[240px] px-2">{event.locationLine2}</p>
-                  </div>
-                </motion.div>
-
-                {/* Footer message */}
-                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2.1 }}
-                  className="pt-6 max-w-lg">
-                  <p className="text-xs md:text-sm text-gray-400 italic leading-[1.8] px-4">
+                  <p className="text-[10px] md:text-xs text-gray-400 italic leading-[1.6] mt-4 border-t border-[#C49B5B]/15 pt-4">
                     "{event.footerMessage}"
                   </p>
                 </motion.div>
-              </motion.div>
+              </div>
             </div>
           </motion.div>
         )}
