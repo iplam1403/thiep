@@ -250,7 +250,9 @@ export default function Template1({ event, guestName }: Props) {
                 
                 {/* Floating Animations ON the card */}
                 <motion.div animate={{ y: [0, -10, 0] }} transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }} className="absolute top-[10%] left-[-5%] opacity-30 text-2xl z-40 pointer-events-none">✨</motion.div>
-                <motion.div animate={{ y: [0, 15, 0] }} transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut', delay: 1 }} className="absolute bottom-[20%] right-[-5%] op                {/* ── THE LAYERED FROSTED GLASS BASE ── */}
+                <motion.div animate={{ y: [0, 15, 0] }} transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut', delay: 1 }} className="absolute bottom-[20%] right-[-5%] opacity-30 text-3xl z-40 pointer-events-none">✨</motion.div>
+
+                {/* ── THE LAYERED FROSTED GLASS BASE ── */}
                 <motion.div 
                   initial={{ opacity: 0, y: 30 }} 
                   animate={{ opacity: 1, y: 0 }} 
