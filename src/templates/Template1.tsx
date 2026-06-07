@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import confetti from 'canvas-confetti'
 import type { IEvent } from '../types'
@@ -89,6 +89,8 @@ const FloralBg = () => (
 
 export default function Template1({ event, guestName }: Props) {
   const [opened, setOpened] = useState(false)
+  const [isPlaying, setIsPlaying] = useState(false)
+  const audioRef = useRef<HTMLAudioElement>(null)
 
   const fireConfetti = () => {
     const end = Date.now() + 3000
@@ -100,11 +102,35 @@ export default function Template1({ event, guestName }: Props) {
     frame()
   }
 
-  const handleOpen = () => { setOpened(true); setTimeout(fireConfetti, 400) }
+  const handleOpen = () => { 
+    setOpened(true); 
+    setTimeout(fireConfetti, 400);
+    if (audioRef.current) {
+      audioRef.current.play().then(() => setIsPlaying(true)).catch(() => console.log("Autoplay prevented"));
+    }
+  }
+
+  const toggleMusic = () => {
+    if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.pause();
+        setIsPlaying(false);
+      } else {
+        audioRef.current.play();
+        setIsPlaying(true);
+      }
+    }
+  }
+
   const isGrad = event.eventType !== 'birthday'
 
   return (
     <div className="w-full min-h-[100dvh] bg-[#FDFBF7]" style={{ fontFamily: "'Be Vietnam Pro', sans-serif" }}>
+      {/* Background Music Player */}
+      <audio ref={audioRef} loop>
+        <source src="https://cdn.pixabay.com/audio/2022/11/22/audio_1cd587285a.mp3" type="audio/mpeg" />
+      </audio>
+
       <AnimatePresence mode="wait">
         {!opened ? (
           /* ═══════ COVER ═══════ */
@@ -211,6 +237,22 @@ export default function Template1({ event, guestName }: Props) {
 
             <div className="relative w-full max-w-5xl min-h-[100dvh] md:min-h-[85vh] bg-[#FDFBF7] md:rounded-3xl md:shadow-[0_20px_50px_rgba(90,40,40,0.15)] md:border md:border-[#C49B5B]/15 overflow-hidden flex flex-col items-center justify-center p-4 md:p-12">
               
+              {/* Music Toggle Button */}
+              <motion.button 
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 1.5, type: 'spring' }}
+                onClick={toggleMusic}
+                className="absolute top-4 left-4 md:top-8 md:left-8 w-10 h-10 md:w-12 md:h-12 bg-white/80 backdrop-blur-md border border-[#C49B5B]/40 rounded-full flex items-center justify-center shadow-lg z-50 cursor-pointer overflow-hidden"
+              >
+                <motion.div animate={{ rotate: isPlaying ? 360 : 0 }} transition={{ duration: 4, repeat: Infinity, ease: 'linear' }} className="flex items-center justify-center">
+                  <span className="text-xl md:text-2xl">{isPlaying ? '🎵' : '🔇'}</span>
+                </motion.div>
+                {isPlaying && (
+                  <div className="absolute inset-0 rounded-full border border-[#C49B5B] animate-ping opacity-20 pointer-events-none" />
+                )}
+              </motion.button>
+
               {/* Floral background */}
               <FloralBg />
 
@@ -400,6 +442,21 @@ export default function Template1({ event, guestName }: Props) {
                 transition={{ delay: 0.5, duration: 0.8 }}
                 className="relative z-10 w-full max-w-2xl mx-auto flex flex-col items-center justify-center text-center pr-[55px] md:pr-0 pl-4 md:pl-0 py-8 md:py-4 overflow-hidden"
               >
+                {/* Floating Butterflies / Animations ON the card */}
+                <motion.div 
+                  animate={{ y: [0, -15, 0], x: [0, 10, 0], rotate: [0, 5, -5, 0] }} 
+                  transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+                  className="absolute top-[10%] left-[10%] opacity-40 text-2xl z-0 pointer-events-none"
+                >
+                  🦋
+                </motion.div>
+                <motion.div 
+                  animate={{ y: [0, 20, 0], x: [0, -15, 0], rotate: [0, -10, 10, 0] }} 
+                  transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+                  className="absolute bottom-[20%] right-[10%] opacity-30 text-3xl z-0 pointer-events-none"
+                >
+                  ✨
+                </motion.div>
                 {/* University header centered */}
                 <motion.div 
                   initial={{ opacity: 0, scale: 0.9 }} 
